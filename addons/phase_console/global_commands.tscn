@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://58plp8w1agqb"]
+
+[ext_resource type="Script" path="res://addons/phase_console/global_commands.gd" id="1_8oubu"]
+[ext_resource type="Script" path="res://addons/phase_console/command_builder.gd" id="1_ra38j"]
+
+[node name="GlobalCommands" type="Node"]
+script = ExtResource("1_8oubu")
+
+[node name="HelpCommand" type="Node" parent="."]
+editor_description = "Node used to add a command. The command will be usable while the node is loaded."
+script = ExtResource("1_ra38j")
+alias = Array[String](["help"])
+
+[node name="ClearCommand" type="Node" parent="."]
+editor_description = "Node used to add a command. The command will be usable while the node is loaded."
+script = ExtResource("1_ra38j")
+alias = Array[String](["clear", "cls"])
+
+[connection signal="command_executed" from="HelpCommand" to="." method="_on_help_command_command_executed"]
+[connection signal="command_executed" from="ClearCommand" to="." method="_on_clear_command_command_executed"]

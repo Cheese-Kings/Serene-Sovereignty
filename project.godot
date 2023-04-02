@@ -14,6 +14,17 @@ config/name="ClickerGameJamGameThing"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ArcLoader="*res://addons/arc_loader/arc_loader.gd"
+LoadingScreen="*res://addons/arc_loader/loading_screen.tscn"
+PhaseConsole="*res://addons/phase_console/console.tscn"
+GlobalCommands="*res://addons/phase_console/global_commands.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/arc_loader/plugin.cfg", "res://addons/phase_console/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

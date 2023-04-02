@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://5duvgsmkefon"]
+
+[ext_resource type="Script" path="res://addons/phase_console/console.gd" id="1_1r1jw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4apjb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qead0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goi2b"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 10
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2jo5"]
+
+[node name="Console" type="CanvasLayer"]
+script = ExtResource("1_1r1jw")
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4apjb")
+metadata/_edit_use_anchors_ = true
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+dragger_visibility = 1
+
+[node name="CommandOutput" type="RichTextLabel" parent="Background/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_qead0")
+scroll_following = true
+
+[node name="CommandInput" type="LineEdit" parent="Background/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_goi2b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y2jo5")
+placeholder_text = "Type 'help' for a list of commands"
