@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxdab7u2nnqn1"]
+
+[ext_resource type="Texture2D" uid="uid://c715x0y2uovhc" path="res://assets/sprites/testing_randomshti.png" id="1_0vakb"]
+[ext_resource type="PackedScene" uid="uid://1awynisxpbmu" path="res://scenes/troops/loser.tscn" id="1_wlhjy"]
+[ext_resource type="Texture2D" uid="uid://3rlmr42kfxd2" path="res://icon.svg" id="2_aas75"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
+vertices = PackedVector2Array(40, -40, 144, -145, 144, 144, 39, 41, -146, 144, -39, 42, -146, -145, -38, -40)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(4, 6, 7, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-146, -145, 144, -145, 144, 144, -146, 144), PackedVector2Array(-38, -40, 40, -40, 39, 41, -39, 42)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdhlv"]
+size = Vector2(64, 64)
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="GameArena" type="Sprite2D" parent="."]
+texture = ExtResource("1_0vakb")
+
+[node name="NavArea" type="NavigationRegion2D" parent="GameArena"]
+navigation_polygon = SubResource("NavigationPolygon_566c8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GameArena"]
+
+[node name="Sprite2D" type="Sprite2D" parent="GameArena/StaticBody2D"]
+texture = ExtResource("2_aas75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArena/StaticBody2D"]
+shape = SubResource("RectangleShape2D_gdhlv")
+debug_color = Color(1, 0.984314, 0, 0.419608)
+
+[node name="Troops" type="Node2D" parent="."]
+
+[node name="Loser" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(120, -120)
+
+[node name="Loser2" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(120, -24)
+
+[node name="Loser3" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(120, 40)
+
+[node name="Loser4" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(80, 97)
+
+[node name="Loser5" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(-16, 81)
+
+[node name="Loser6" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(-104, 113)
+
+[node name="Loser7" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(-104, -15)
+
+[node name="Loser8" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(-128, -127)
+
+[node name="Loser9" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(0, -111)
+
+[node name="Loser10" parent="Troops" instance=ExtResource("1_wlhjy")]
+position = Vector2(0, -111)

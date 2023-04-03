@@ -14,7 +14,6 @@ var input_list = []
 @onready var background: Panel = $Background
 @onready var command_input: LineEdit = $Background/VSplitContainer/CommandInput
 @onready var command_output: RichTextLabel = $Background/VSplitContainer/CommandOutput
-@onready var show_timer: Timer = $Background/Timer
 
 
 func _ready():

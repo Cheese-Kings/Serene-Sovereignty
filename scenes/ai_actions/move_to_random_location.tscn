@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://br55cy74bbdns"]
+
+[ext_resource type="Script" path="res://scripts/ai_actions/move_to_random_location.gd" id="1_gghxo"]
+
+[node name="MoveToRandomLocation" type="Node"]
+script = ExtResource("1_gghxo")

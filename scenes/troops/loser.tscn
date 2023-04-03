@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://1awynisxpbmu"]
+
+[ext_resource type="Script" path="res://scripts/troops/loser.gd" id="1_epyq1"]
+[ext_resource type="Texture2D" uid="uid://x5v38xajfnko" path="res://assets/sprites/troops/neutralunit.png" id="2_ruk6q"]
+[ext_resource type="PackedScene" uid="uid://b4hrjv8y5f5t7" path="res://scenes/behaviour_trees/loser_ai.tscn" id="3_c7gbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_228lp"]
+size = Vector2(16, 19)
+
+[node name="Loser" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("1_epyq1")
+nav_agent = NodePath("NavigationAgent")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_228lp")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="PathLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 0.584314)
+begin_cap_mode = 1
+end_cap_mode = 1
+antialiased = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("2_ruk6q")
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[node name="LoserAI" parent="." instance=ExtResource("3_c7gbj")]
+actor_node_path = NodePath("..")

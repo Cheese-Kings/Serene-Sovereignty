@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4hrjv8y5f5t7"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_x7ik3"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_6qvcv"]
+[ext_resource type="PackedScene" uid="uid://br55cy74bbdns" path="res://scenes/ai_actions/move_to_random_location.tscn" id="3_m8vb4"]
+
+[node name="LoserAI" type="Node"]
+script = ExtResource("1_x7ik3")
+
+[node name="Wander" type="Node" parent="."]
+script = ExtResource("2_6qvcv")
+
+[node name="MoveToRandomLocation" parent="Wander" instance=ExtResource("3_m8vb4")]
+move_chance_max = 60
+move_distance = 200
