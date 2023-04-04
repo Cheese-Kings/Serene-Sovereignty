@@ -1,9 +1,9 @@
+NavigationObstacle2D
+Line2D
 CollisionShape2D
 StaticBody2D
-NavigationObstacle2D
 Sprite2D
 BlackboardHasCondition
-Line2D
 NavigationAgent2D
 NavigationRegion2D
 SequenceComposite

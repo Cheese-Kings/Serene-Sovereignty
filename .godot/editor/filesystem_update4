@@ -1,8 +1,6 @@
-res://scenes/behaviour_trees/loser_ai.tscn
-res://scenes/troops/loser.tscn
 res://scenes/ai_actions/move_to_random_location.tscn
-res://scripts/ai_actions/move_to_random_location.gd
 res://scenes/game.tscn
+res://scenes/troops/loser.tscn
+res://scenes/behaviour_trees/loser_ai.tscn
+res://scripts/ai_actions/move_to_random_location.gd
 res://scripts/custom_nodes/troop.gd
-res://scripts/custom_classes/troop_stats.gd
-res://scripts/troops/loser.gd

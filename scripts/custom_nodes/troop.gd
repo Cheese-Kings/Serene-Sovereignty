@@ -22,22 +22,27 @@ func _physics_process(_delta):
 		var v = (next_location - global_position).normalized() * stats.speed
 		nav_agent.set_velocity(v)
 		
-		$PathLine.points[0] = global_position - position
-		$PathLine.points[1] = next_location - position
-	
+		if OS.is_debug_build():
+			if is_instance_valid($PathLine):
+				$PathLine.position = -position
+				$PathLine.points = nav_agent.get_current_navigation_path()
+			
+			if is_instance_valid($DestinationLine): $DestinationLine.points[1] = next_location - position
+		else:
+			if is_instance_valid($PathLine): $PathLine.hide()
+			if is_instance_valid($DestinationLine): $DestinationLine.hide()
 
 # Function to initialize troop stats
 func _initialize_stats():
 	stats = TroopStats.new()
 
 func navigate_to(location: Vector2):
-	nav_agent.target_position = location
+	nav_agent.set_target_position(location)
 	navigating = true
 
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
-	#position += safe_velocity
 
 func _on_target_reached():
 	navigating = false

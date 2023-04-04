@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=8 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="Texture2D" uid="uid://c715x0y2uovhc" path="res://assets/sprites/testing_randomshti.png" id="1_0vakb"]
 [ext_resource type="PackedScene" uid="uid://1awynisxpbmu" path="res://scenes/troops/loser.tscn" id="1_wlhjy"]
 [ext_resource type="Texture2D" uid="uid://3rlmr42kfxd2" path="res://icon.svg" id="2_aas75"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
-vertices = PackedVector2Array(40, -40, 144, -145, 144, 144, 39, 41, -146, 144, -39, 42, -146, -145, -38, -40)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(4, 6, 7, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-146, -145, 144, -145, 144, 144, -146, 144), PackedVector2Array(-38, -40, 40, -40, 39, 41, -39, 42)])
+vertices = PackedVector2Array(133, -135, 135, 136, 46, 45, 46, -45, -138, 135, -46, 45, -137, -136, -46, -45)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-137, -136, 133, -135, 135, 136, -138, 135), PackedVector2Array(-46, -45, 46, -45, 46, 45, -46, 45)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdhlv"]
 size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bviha"]
+size = Vector2(45, 385)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuj5e"]
+size = Vector2(381, 48)
 
 [node name="Game" type="Node2D"]
 
@@ -22,13 +28,35 @@ texture = ExtResource("1_0vakb")
 [node name="NavArea" type="NavigationRegion2D" parent="GameArena"]
 navigation_polygon = SubResource("NavigationPolygon_566c8")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="GameArena"]
+[node name="MiddleBlockThing" type="StaticBody2D" parent="GameArena"]
 
-[node name="Sprite2D" type="Sprite2D" parent="GameArena/StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="GameArena/MiddleBlockThing"]
 texture = ExtResource("2_aas75")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArena/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArena/MiddleBlockThing"]
 shape = SubResource("RectangleShape2D_gdhlv")
+debug_color = Color(1, 0.984314, 0, 0.419608)
+
+[node name="MapEdge" type="StaticBody2D" parent="GameArena"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArena/MapEdge"]
+position = Vector2(-168.5, -0.5)
+shape = SubResource("RectangleShape2D_bviha")
+debug_color = Color(1, 0.984314, 0, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameArena/MapEdge"]
+position = Vector2(167.5, -0.5)
+shape = SubResource("RectangleShape2D_bviha")
+debug_color = Color(1, 0.984314, 0, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GameArena/MapEdge"]
+position = Vector2(-0.5, 168)
+shape = SubResource("RectangleShape2D_iuj5e")
+debug_color = Color(1, 0.984314, 0, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GameArena/MapEdge"]
+position = Vector2(-0.5, -168)
+shape = SubResource("RectangleShape2D_iuj5e")
 debug_color = Color(1, 0.984314, 0, 0.419608)
 
 [node name="Troops" type="Node2D" parent="."]
@@ -46,7 +74,7 @@ position = Vector2(120, 40)
 position = Vector2(80, 97)
 
 [node name="Loser5" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(-16, 81)
+position = Vector2(0, 112)
 
 [node name="Loser6" parent="Troops" instance=ExtResource("1_wlhjy")]
 position = Vector2(-104, 113)
@@ -55,7 +83,7 @@ position = Vector2(-104, 113)
 position = Vector2(-104, -15)
 
 [node name="Loser8" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(-128, -127)
+position = Vector2(-120, -119)
 
 [node name="Loser9" parent="Troops" instance=ExtResource("1_wlhjy")]
 position = Vector2(0, -111)

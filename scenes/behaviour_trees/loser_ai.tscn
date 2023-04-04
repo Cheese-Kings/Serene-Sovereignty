@@ -7,9 +7,10 @@
 [node name="LoserAI" type="Node"]
 script = ExtResource("1_x7ik3")
 
-[node name="Wander" type="Node" parent="."]
+[node name="WanderGoal" type="Node" parent="."]
 script = ExtResource("2_6qvcv")
 
-[node name="MoveToRandomLocation" parent="Wander" instance=ExtResource("3_m8vb4")]
-move_chance_max = 60
-move_distance = 200
+[node name="MoveToRandomLocation" parent="WanderGoal" instance=ExtResource("3_m8vb4")]
+move_chance_max = 300
+move_distance = 100
+movement_hotspot = Vector2(0, 112)
