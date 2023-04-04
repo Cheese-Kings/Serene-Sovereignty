@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="Texture2D" uid="uid://c715x0y2uovhc" path="res://assets/sprites/testing_randomshti.png" id="1_0vakb"]
-[ext_resource type="PackedScene" uid="uid://1awynisxpbmu" path="res://scenes/troops/loser.tscn" id="1_wlhjy"]
 [ext_resource type="Texture2D" uid="uid://3rlmr42kfxd2" path="res://icon.svg" id="2_aas75"]
+[ext_resource type="Script" path="res://scripts/debug/troop_spammer.gd" id="3_a8tdr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
 vertices = PackedVector2Array(133, -135, 135, 136, 46, 45, 46, -45, -138, 135, -46, 45, -137, -136, -46, -45)
@@ -59,34 +59,23 @@ position = Vector2(-0.5, -168)
 shape = SubResource("RectangleShape2D_iuj5e")
 debug_color = Color(1, 0.984314, 0, 0.419608)
 
+[node name="TroopSpammer" type="Node2D" parent="." node_paths=PackedStringArray("troop_counter", "spawn_timer", "troop_container")]
+script = ExtResource("3_a8tdr")
+troop_counter = NodePath("Label")
+spawn_timer = NodePath("Timer")
+troop_container = NodePath("../Troops")
+
+[node name="Label" type="Label" parent="TroopSpammer"]
+offset_left = -176.0
+offset_top = -184.0
+offset_right = -136.0
+offset_bottom = -161.0
+text = "Troop Count: 69"
+
+[node name="Timer" type="Timer" parent="TroopSpammer"]
+wait_time = 0.5
+autostart = true
+
 [node name="Troops" type="Node2D" parent="."]
 
-[node name="Loser" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(120, -120)
-
-[node name="Loser2" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(120, -24)
-
-[node name="Loser3" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(120, 40)
-
-[node name="Loser4" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(80, 97)
-
-[node name="Loser5" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(0, 112)
-
-[node name="Loser6" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(-104, 113)
-
-[node name="Loser7" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(-104, -15)
-
-[node name="Loser8" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(-120, -119)
-
-[node name="Loser9" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(0, -111)
-
-[node name="Loser10" parent="Troops" instance=ExtResource("1_wlhjy")]
-position = Vector2(0, -111)
+[connection signal="timeout" from="TroopSpammer/Timer" to="TroopSpammer" method="_on_timer_timeout"]

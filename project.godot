@@ -25,13 +25,18 @@ BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 
 [display]
 
-window/size/viewport_width=384
+window/size/viewport_width=768
 window/size/viewport_height=384
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/arc_loader/plugin.cfg", "res://addons/phase_console/plugin.cfg", "res://addons/beehave/plugin.cfg")
+
+[physics]
+
+common/physics_ticks_per_second=30
+common/max_physics_steps_per_frame=4
 
 [rendering]
 

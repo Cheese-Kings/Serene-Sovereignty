@@ -1,42 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://1awynisxpbmu"]
+[gd_scene load_steps=9 format=3 uid="uid://1awynisxpbmu"]
 
 [ext_resource type="Script" path="res://scripts/troops/loser.gd" id="1_epyq1"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_kb72b"]
 [ext_resource type="Texture2D" uid="uid://x5v38xajfnko" path="res://assets/sprites/troops/neutralunit.png" id="2_ruk6q"]
 [ext_resource type="PackedScene" uid="uid://b4hrjv8y5f5t7" path="res://scenes/behaviour_trees/loser_ai.tscn" id="3_c7gbj"]
+[ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="3_tejk2"]
+[ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_76h5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_228lp"]
-size = Vector2(12, 15)
+size = Vector2(8, 10)
 
 [sub_resource type="Curve" id="Curve_4mvdu"]
 _data = [Vector2(0, 0.496933), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Loser" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+[node name="Loser" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "troop_animator", "state_handler")]
 script = ExtResource("1_epyq1")
 nav_agent = NodePath("NavigationAgent")
+troop_animator = NodePath("Sprite/TroopAnimations")
+state_handler = NodePath("TroopStateHandler")
+
+[node name="TroopStateHandler" type="Node" parent="." node_paths=PackedStringArray("troop_animator")]
+script = ExtResource("2_kb72b")
+troop_animator = NodePath("../Sprite/TroopAnimations")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_228lp")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="PathLine" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 width_curve = SubResource("Curve_4mvdu")
 default_color = Color(1, 0, 0, 0.584314)
 
 [node name="DestinationLine" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(0, 0.917647, 1, 0.368627)
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -1)
 texture = ExtResource("2_ruk6q")
-region_rect = Rect2(0, 0, 32, 32)
+region_enabled = true
+region_rect = Rect2(0, 12, 32, 20)
+
+[node name="TroopAnimations" type="AnimationPlayer" parent="Sprite"]
+playback_default_blend_time = 1.0
+speed_scale = 1.6
+libraries = {
+"": ExtResource("3_tejk2")
+}
+script = ExtResource("5_76h5g")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
 path_max_distance = 25.0
 avoidance_enabled = true
 

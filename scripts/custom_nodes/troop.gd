@@ -3,13 +3,20 @@ extends CharacterBody2D
 
 
 @export var nav_agent: NavigationAgent2D
+@export var troop_animator: AnimationPlayer
+@export var state_handler: TroopStateHandler
+
+const VEL_LIMIT = 2
 
 var stats: TroopStats
+var state_machine: TroopStateMachine
 
 var navigating = false
 
 
 func _ready():
+	_initialize_state_machine()
+	
 	# Initialize troop stats
 	_initialize_stats()
 	
@@ -31,6 +38,20 @@ func _physics_process(_delta):
 		else:
 			if is_instance_valid($PathLine): $PathLine.hide()
 			if is_instance_valid($DestinationLine): $DestinationLine.hide()
+	
+	if is_instance_valid(state_handler):
+		if velocity.x > VEL_LIMIT or velocity.y > VEL_LIMIT and velocity.x < -VEL_LIMIT or velocity.y < -VEL_LIMIT:
+			state_machine.set_state(TroopStateMachine.State.WALKING)
+		else:
+			state_machine.set_state(TroopStateMachine.State.IDLE)
+		
+		var troop_state = state_machine.get_state()
+		if troop_state == TroopStateMachine.State.IDLE: state_handler._state_idle()
+		elif troop_state == TroopStateMachine.State.WALKING: state_handler._state_walking()
+		elif troop_state == TroopStateMachine.State.BALLS: state_handler._state_balls()
+
+func _initialize_state_machine():
+	state_machine = TroopStateMachine.new().set_state(TroopStateMachine.State.IDLE)
 
 # Function to initialize troop stats
 func _initialize_stats():

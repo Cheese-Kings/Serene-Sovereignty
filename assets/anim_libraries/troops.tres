@@ -1,0 +1,36 @@
+[gd_resource type="AnimationLibrary" load_steps=3 format=3 uid="uid://b06f1ywhwju3y"]
+
+[sub_resource type="Animation" id="Animation_xnl8y"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.25, 0, 0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_idc6k"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[resource]
+_data = {
+"RESET": SubResource("Animation_idc6k"),
+"walk": SubResource("Animation_xnl8y")
+}

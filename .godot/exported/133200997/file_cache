@@ -1,0 +1,10 @@
+res://addons/arc_loader/loading_icon.tscn::4b0f8611b99671f3638db3fd3af23953::1678931482::res://.godot/exported/133200997/export-930c32c85fa81a7270d2bdf2b43348d4-loading_icon.scn
+res://addons/arc_loader/loading_screen.tscn::0ea633353f47b65107f8ae7c0638e332::1678931482::res://.godot/exported/133200997/export-3ad0fedb05129f59ac44ea6f24bb1cfd-loading_screen.scn
+res://addons/arc_loader/load_checker.tscn::8d3640e94ef286fd3cad358940de0548::1670253444::res://.godot/exported/133200997/export-9acdf5c6c4bf2933e86b84cfe3812232-load_checker.scn
+res://addons/phase_console/console.tscn::5c8b77bb9421710dee9e0568c85e3562::1679018169::res://.godot/exported/133200997/export-ce2cfe275172937b88b0780b7a734d36-console.scn
+res://addons/phase_console/global_commands.tscn::72c41db71bb5da1547296ba6c8236121::1679018269::res://.godot/exported/133200997/export-86a448605d7504aa8c8bb5d075f28d02-global_commands.scn
+res://scenes/ai_actions/move_to_random_location.tscn::42dd51c7ec2d7d3217a9b6ddccf7b9d2::1680616806::res://.godot/exported/133200997/export-6074a548ca6460fd9a784eb7847b3fa9-move_to_random_location.scn
+res://scenes/behaviour_trees/loser_ai.tscn::2b93f4a6f0c51f429977232180efc79d::1680616806::res://.godot/exported/133200997/export-839c6f422f41585816f77af399e7a7f9-loser_ai.scn
+res://scenes/troops/loser.tscn::320dd6c9f8037914edf82a6f9c533395::1680616970::res://.godot/exported/133200997/export-b89e9e1f585bb426506e71a2d5e27855-loser.scn
+res://scenes/game.tscn::13a668aa0da4c3715798f61fa8879145::1680616806::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://scenes/main_menu.tscn::87a4a1d09634c46332f11d9be89d29dc::1680525697::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn

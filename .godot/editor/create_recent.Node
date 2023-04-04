@@ -1,3 +1,9 @@
+TroopStateHandler
+Button
+Timer
+Label
+Node2D
+AnimationPlayer
 NavigationObstacle2D
 Line2D
 CollisionShape2D
@@ -11,6 +17,5 @@ SelectorComposite
 ActionLeaf
 SequenceStarComposite
 BeehaveTree
-Node2D
 Camera2D
 Troop
