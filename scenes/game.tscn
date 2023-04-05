@@ -1,81 +1,122 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=7 format=3 uid="uid://cxdab7u2nnqn1"]
 
-[ext_resource type="Texture2D" uid="uid://c715x0y2uovhc" path="res://assets/sprites/testing_randomshti.png" id="1_0vakb"]
-[ext_resource type="Texture2D" uid="uid://3rlmr42kfxd2" path="res://icon.svg" id="2_aas75"]
-[ext_resource type="Script" path="res://scripts/debug/troop_spammer.gd" id="3_a8tdr"]
+[ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
+[ext_resource type="Texture2D" uid="uid://bhcdl7n54j5n7" path="res://assets/sprites/grassfield.png" id="2_kpsyd"]
+[ext_resource type="PackedScene" uid="uid://1awynisxpbmu" path="res://scenes/troops/loser.tscn" id="3_wrk6b"]
+[ext_resource type="PackedScene" uid="uid://bgojqyy8rbv2g" path="res://scenes/troops/swordsman.tscn" id="4_sf3di"]
+[ext_resource type="Texture2D" uid="uid://cvv26470xa1iq" path="res://assets/sprites/ui/toolbar2.png" id="5_p5gaw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
-vertices = PackedVector2Array(133, -135, 135, 136, 46, 45, 46, -45, -138, 135, -46, 45, -137, -136, -46, -45)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-137, -136, 133, -135, 135, 136, -138, 135), PackedVector2Array(-46, -45, 46, -45, 46, 45, -46, 45)])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdhlv"]
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bviha"]
-size = Vector2(45, 385)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuj5e"]
-size = Vector2(381, 48)
+vertices = PackedVector2Array(-297, 170, -365, 170, -363, -272, -265, 79, -178, 80, 362, -280, 267, 70, 177, 78, 360, 167, 293, 167, -174, 106, 163, 107, 65, 120, -63, 124, 0, 168)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6, 7), PackedInt32Array(5, 8, 9, 6), PackedInt32Array(10, 4, 7, 11, 12, 13), PackedInt32Array(13, 12, 14)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-365, 170, -363, -272, 362, -280, 360, 167, 293, 167, 267, 70, 177, 78, 163, 107, 65, 120, 0, 168, -63, 124, -174, 106, -178, 80, -265, 79, -297, 170)])
 
 [node name="Game" type="Node2D"]
+
+[node name="DayNightCycle" parent="." instance=ExtResource("1_av7on")]
 
 [node name="Camera" type="Camera2D" parent="."]
 
 [node name="GameArena" type="Sprite2D" parent="."]
-texture = ExtResource("1_0vakb")
+texture = ExtResource("2_kpsyd")
 
 [node name="NavArea" type="NavigationRegion2D" parent="GameArena"]
 navigation_polygon = SubResource("NavigationPolygon_566c8")
 
-[node name="MiddleBlockThing" type="StaticBody2D" parent="GameArena"]
+[node name="Troops" type="CanvasGroup" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="GameArena/MiddleBlockThing"]
-texture = ExtResource("2_aas75")
+[node name="Loser" parent="Troops" instance=ExtResource("3_wrk6b")]
+position = Vector2(120, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArena/MiddleBlockThing"]
-shape = SubResource("RectangleShape2D_gdhlv")
-debug_color = Color(1, 0.984314, 0, 0.419608)
+[node name="Loser2" parent="Troops" instance=ExtResource("3_wrk6b")]
+position = Vector2(96, 40)
 
-[node name="MapEdge" type="StaticBody2D" parent="GameArena"]
+[node name="Loser3" parent="Troops" instance=ExtResource("3_wrk6b")]
+position = Vector2(72, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArena/MapEdge"]
-position = Vector2(-168.5, -0.5)
-shape = SubResource("RectangleShape2D_bviha")
-debug_color = Color(1, 0.984314, 0, 0.419608)
+[node name="Loser4" parent="Troops" instance=ExtResource("3_wrk6b")]
+position = Vector2(96, 0)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameArena/MapEdge"]
-position = Vector2(167.5, -0.5)
-shape = SubResource("RectangleShape2D_bviha")
-debug_color = Color(1, 0.984314, 0, 0.419608)
+[node name="Swordsman" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-3, 114)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="GameArena/MapEdge"]
-position = Vector2(-0.5, 168)
-shape = SubResource("RectangleShape2D_iuj5e")
-debug_color = Color(1, 0.984314, 0, 0.419608)
+[node name="Swordsman2" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(0, 114)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="GameArena/MapEdge"]
-position = Vector2(-0.5, -168)
-shape = SubResource("RectangleShape2D_iuj5e")
-debug_color = Color(1, 0.984314, 0, 0.419608)
+[node name="Swordsman3" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-2, 119)
 
-[node name="TroopSpammer" type="Node2D" parent="." node_paths=PackedStringArray("troop_counter", "spawn_timer", "troop_container")]
-script = ExtResource("3_a8tdr")
-troop_counter = NodePath("Label")
-spawn_timer = NodePath("Timer")
-troop_container = NodePath("../Troops")
+[node name="Swordsman4" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-1, 114)
 
-[node name="Label" type="Label" parent="TroopSpammer"]
-offset_left = -176.0
-offset_top = -184.0
-offset_right = -136.0
-offset_bottom = -161.0
-text = "Troop Count: 69"
+[node name="Swordsman5" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-2, 119)
 
-[node name="Timer" type="Timer" parent="TroopSpammer"]
-wait_time = 0.5
-autostart = true
+[node name="Swordsman6" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-3, 115)
 
-[node name="Troops" type="Node2D" parent="."]
+[node name="Swordsman7" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-2, 114)
 
-[connection signal="timeout" from="TroopSpammer/Timer" to="TroopSpammer" method="_on_timer_timeout"]
+[node name="Swordsman8" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(0, 121)
+
+[node name="Swordsman9" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-1, 117)
+
+[node name="Swordsman10" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(-1, 117)
+
+[node name="Swordsman11" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(21, 114)
+
+[node name="Swordsman12" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(24, 114)
+
+[node name="Swordsman13" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(22, 119)
+
+[node name="Swordsman14" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(23, 114)
+
+[node name="Swordsman15" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(22, 119)
+
+[node name="Swordsman16" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(21, 115)
+
+[node name="Swordsman17" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(22, 114)
+
+[node name="Swordsman18" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(24, 121)
+
+[node name="Swordsman19" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(23, 117)
+
+[node name="Swordsman20" parent="Troops" instance=ExtResource("4_sf3di")]
+position = Vector2(29, 117)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbar" type="TextureRect" parent="UILayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = -146.0
+offset_right = 278.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_p5gaw")

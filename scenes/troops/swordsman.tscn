@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgojqyy8rbv2g"]
+
+[ext_resource type="Script" path="res://scripts/troops/swordsman.gd" id="1_jtyms"]
+[ext_resource type="Texture2D" uid="uid://c0i42whkvme31" path="res://assets/sprites/troops/soldier.png" id="2_7q06d"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_ginl8"]
+[ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="3_316mx"]
+[ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_v0nho"]
+[ext_resource type="Texture2D" uid="uid://b3c2lbxu4n6it" path="res://assets/sprites/lights/troop_light.png" id="6_r806e"]
+[ext_resource type="PackedScene" uid="uid://i0q8o7466ote" path="res://scenes/behaviour_trees/melee_ai.tscn" id="7_j0tdu"]
+[ext_resource type="Script" path="res://scripts/troop_light.gd" id="8_u0s3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynbj7"]
+size = Vector2(8, 12)
+
+[sub_resource type="Curve" id="Curve_3jkfk"]
+_data = [Vector2(0, 0.496933), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Swordsman" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "troop_animator", "state_handler") groups=["Swordsman", "Troop"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_jtyms")
+nav_agent = NodePath("NavigationAgent")
+troop_animator = NodePath("Sprite/AnimationPlayer")
+state_handler = NodePath("TroopStateHandler")
+
+[node name="TroopStateHandler" type="Node" parent="." node_paths=PackedStringArray("troop_animator")]
+script = ExtResource("2_ginl8")
+troop_animator = NodePath("../Sprite/AnimationPlayer")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ynbj7")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="PathLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+width_curve = SubResource("Curve_3jkfk")
+default_color = Color(1, 0, 0, 0.584314)
+
+[node name="DestinationLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(0, 0.917647, 1, 0.368627)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1)
+texture = ExtResource("2_7q06d")
+region_enabled = true
+region_rect = Rect2(0, 10, 32, 22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"troops": ExtResource("3_316mx")
+}
+script = ExtResource("5_v0nho")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+path_max_distance = 25.0
+avoidance_enabled = true
+radius = 5.0
+
+[node name="MeleeAI" parent="." instance=ExtResource("7_j0tdu")]
+actor_node_path = NodePath("..")
+
+[node name="PointLight" type="PointLight2D" parent="."]
+position = Vector2(0, -1)
+blend_mode = 2
+texture = ExtResource("6_r806e")
+texture_scale = 1.3
+script = ExtResource("8_u0s3m")

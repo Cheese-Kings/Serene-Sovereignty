@@ -6,12 +6,14 @@ extends CharacterBody2D
 @export var troop_animator: AnimationPlayer
 @export var state_handler: TroopStateHandler
 
-const VEL_LIMIT = 2
+const VEL_LIMIT = 0.2
 
 var stats: TroopStats
 var state_machine: TroopStateMachine
 
 var navigating = false
+
+var old_pos := Vector2.ZERO
 
 
 func _ready():
@@ -19,6 +21,8 @@ func _ready():
 	
 	# Initialize troop stats
 	_initialize_stats()
+	
+	troop_animator.speed_scale = stats.speed / 10
 	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	nav_agent.target_reached.connect(_on_target_reached)
@@ -40,10 +44,12 @@ func _physics_process(_delta):
 			if is_instance_valid($DestinationLine): $DestinationLine.hide()
 	
 	if is_instance_valid(state_handler):
-		if velocity.x > VEL_LIMIT or velocity.y > VEL_LIMIT and velocity.x < -VEL_LIMIT or velocity.y < -VEL_LIMIT:
+		var rounded_pos = snapped(position, Vector2(VEL_LIMIT, VEL_LIMIT))
+		if rounded_pos != old_pos:
 			state_machine.set_state(TroopStateMachine.State.WALKING)
 		else:
 			state_machine.set_state(TroopStateMachine.State.IDLE)
+		old_pos = rounded_pos
 		
 		var troop_state = state_machine.get_state()
 		if troop_state == TroopStateMachine.State.IDLE: state_handler._state_idle()
@@ -64,6 +70,7 @@ func navigate_to(location: Vector2):
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
+	velocity = Vector2.ZERO
 
 func _on_target_reached():
 	navigating = false

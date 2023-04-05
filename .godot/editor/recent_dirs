@@ -1,8 +1,9 @@
 res://scripts
+res://
+res://scripts/ai/actions/swordsman
+res://scripts/autoload
 res://assets/anim_libraries
+res://scripts/troops
 C:/Users/hclark7/OneDrive - Brisbane Catholic Education/Documents/Github/ClickerGameJamGameThing/.export/windows_jam
 res://scripts/debug
-res://scripts/ai_actions
-res://scripts/troops
-res://
 C:/Users/hclark7/OneDrive - Brisbane Catholic Education/Documents/Github/ClickerGameJamGameThing/.export/web_jam
