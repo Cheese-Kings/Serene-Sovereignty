@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1awynisxpbmu"]
+[gd_scene load_steps=11 format=3 uid="uid://1awynisxpbmu"]
 
 [ext_resource type="Script" path="res://scripts/troops/loser.gd" id="1_epyq1"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_kb72b"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_76h5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_228lp"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvuo7"]
 size = Vector2(8, 10)
 
 [sub_resource type="Curve" id="Curve_4mvdu"]
@@ -27,15 +30,26 @@ troop_animator = NodePath("../Sprite/TroopAnimations")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_228lp")
+disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="TownHallDetection" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="Collider" type="CollisionShape2D" parent="TownHallDetection"]
+shape = SubResource("RectangleShape2D_wvuo7")
+debug_color = Color(0.701961, 0.490196, 0, 0.717647)
+
 [node name="PathLine" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 width_curve = SubResource("Curve_4mvdu")
 default_color = Color(1, 0, 0, 0.584314)
 
 [node name="DestinationLine" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(0, 0.917647, 1, 0.368627)

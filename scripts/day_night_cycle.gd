@@ -13,7 +13,7 @@ func _ready():
 
 func _on_day_night_timer_timeout():
 	if TimeCycle.current_time == TimeCycle.TimeState.Day: TimeCycle.current_time = TimeCycle.TimeState.Sunset; TimeCycle.is_daylight = false; animation_player.play("Sunset")
-	elif TimeCycle.current_time == TimeCycle.TimeState.Night: TimeCycle.current_time = TimeCycle.TimeState.Sunrise; TimeCycle.is_daylight = true; animation_player.play("Sunrise")
+	elif TimeCycle.current_time == TimeCycle.TimeState.Night: TimeCycle.current_time = TimeCycle.TimeState.Sunrise; TimeCycle.is_daylight = true; animation_player.play("Sunrise"); GameStats.current_day += 1
 	sunset_sunrise_timer.start()
 
 func _on_sunset_sunrise_timer_timeout():

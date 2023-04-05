@@ -19,10 +19,9 @@ config/icon="res://icon.png"
 
 ArcLoader="*res://addons/arc_loader/arc_loader.gd"
 LoadingScreen="*res://addons/arc_loader/loading_screen.tscn"
-PhaseConsole="*res://addons/phase_console/console.tscn"
-GlobalCommands="*res://addons/phase_console/global_commands.tscn"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 TimeCycle="*res://scripts/autoload/time_cycle.gd"
+GameStats="*res://scripts/autoload/game_stats.gd"
 
 [display]
 
@@ -32,7 +31,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/arc_loader/plugin.cfg", "res://addons/phase_console/plugin.cfg", "res://addons/beehave/plugin.cfg")
+enabled=PackedStringArray("res://addons/arc_loader/plugin.cfg", "res://addons/beehave/plugin.cfg")
 
 [physics]
 
@@ -41,6 +40,6 @@ common/max_physics_steps_per_frame=4
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/canvas_textures/default_texture_filter=0

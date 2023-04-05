@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvv26470xa1iq"
-path="res://.godot/imported/toolbar2.png-27401ee0996d88943e3eec3e923894b8.ctex"
+uid="uid://by68tqm7dhax4"
+path="res://.godot/imported/upgradecrops.png-e67f765662210c9cd237fda3e66999cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/toolbar2.png"
-dest_files=["res://.godot/imported/toolbar2.png-27401ee0996d88943e3eec3e923894b8.ctex"]
+source_file="res://assets/sprites/ui/upgradecrops.png"
+dest_files=["res://.godot/imported/upgradecrops.png-e67f765662210c9cd237fda3e66999cd.ctex"]
 
 [params]
 

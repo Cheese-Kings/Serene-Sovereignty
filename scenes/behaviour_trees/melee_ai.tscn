@@ -21,7 +21,7 @@ script = ExtResource("3_8gnc8")
 
 [node name="GoToHouse" type="Node" parent="SelectorComposite/GoToHouseDuringDay"]
 script = ExtResource("4_imsdk")
-destination = Vector2(0, 125)
+destination = Vector2(0, 170)
 
 [node name="PrepareForAttackAtNight" type="Node" parent="SelectorComposite"]
 script = ExtResource("2_1fp1i")

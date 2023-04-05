@@ -5,6 +5,8 @@ res://scenes/troops/swordsman.tscn
 res://scenes/behaviour_trees/melee_ai.tscn
 res://scenes/day_night_cycle.tscn
 res://scenes/behaviour_trees/loser_ai.tscn
-res://scripts/troop_light.gd
-res://scripts/custom_nodes/troop.gd
-res://scripts/ai/actions/move_to_random_location.gd
+res://scripts/ui.gd
+res://scripts/autoload/game_stats.gd
+res://scripts/day_night_cycle.gd
+res://scripts/game.gd
+res://scripts/ui/unit_purchase_button.gd
