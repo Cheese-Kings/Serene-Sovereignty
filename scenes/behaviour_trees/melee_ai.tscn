@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://i0q8o7466ote"]
+[gd_scene load_steps=9 format=3 uid="uid://bo42u0cl77ryc"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_2wou5"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_1fp1i"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_hst72"]
 [ext_resource type="Script" path="res://scripts/ai/conditions/is_daylight.gd" id="3_8gnc8"]
 [ext_resource type="Script" path="res://scripts/ai/actions/move_to_location.gd" id="4_imsdk"]
-[ext_resource type="Script" path="res://scripts/ai/actions/swordsman/get_to_attack_position.gd" id="6_jienj"]
+[ext_resource type="Script" path="res://scripts/ai/actions/troop_specific/get_to_attack_position.gd" id="6_hip02"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_nearest_target.gd" id="7_nqkwb"]
+[ext_resource type="Script" path="res://scripts/ai/actions/attack_target_in_range.gd" id="7_srosn"]
 
 [node name="MeleeAI" type="Node"]
 script = ExtResource("1_2wou5")
@@ -23,13 +25,19 @@ script = ExtResource("3_8gnc8")
 script = ExtResource("4_imsdk")
 destination = Vector2(0, 170)
 
-[node name="PrepareForAttackAtNight" type="Node" parent="SelectorComposite"]
+[node name="AttackAtNight" type="Node" parent="SelectorComposite"]
 script = ExtResource("2_1fp1i")
 
-[node name="IsDaylight" type="Node" parent="SelectorComposite/PrepareForAttackAtNight"]
+[node name="IsDaylight" type="Node" parent="SelectorComposite/AttackAtNight"]
 script = ExtResource("3_8gnc8")
 want_day = false
 
-[node name="MoveToAttackPosition" type="Node" parent="SelectorComposite/PrepareForAttackAtNight"]
-script = ExtResource("6_jienj")
+[node name="MoveToAttackPosition" type="Node" parent="SelectorComposite/AttackAtNight"]
+script = ExtResource("6_hip02")
 destination = Vector2(0, -80)
+
+[node name="GoToNearestTarget" type="Node" parent="SelectorComposite/AttackAtNight"]
+script = ExtResource("7_nqkwb")
+
+[node name="AttackTargetInRange" type="Node" parent="SelectorComposite/AttackAtNight"]
+script = ExtResource("7_srosn")

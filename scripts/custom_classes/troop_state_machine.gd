@@ -5,6 +5,7 @@ extends Resource
 enum State {
 	IDLE,
 	WALKING,
+	ATTACKING,
 	BALLS
 }
 

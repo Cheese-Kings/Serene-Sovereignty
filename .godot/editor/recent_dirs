@@ -1,11 +1,12 @@
+res://scripts/projectiles
+res://scripts/blackboards
+res://scripts/troops
+res://assets/anim_libraries
 res://scripts/ui
 res://scripts
 res://assets/sprites/ui
 res://scripts/autoload
 res://
-res://scripts/ai/actions/swordsman
-res://assets/anim_libraries
-res://scripts/troops
 C:/Users/hclark7/OneDrive - Brisbane Catholic Education/Documents/Github/ClickerGameJamGameThing/.export/windows_jam
 res://scripts/debug
 C:/Users/hclark7/OneDrive - Brisbane Catholic Education/Documents/Github/ClickerGameJamGameThing/.export/web_jam

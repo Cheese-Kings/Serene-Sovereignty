@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3valh1mjri66"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_crvsl"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_5wrro"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_nearest_target.gd" id="3_bmjc8"]
+[ext_resource type="Script" path="res://scripts/ai/actions/attack_target_in_range.gd" id="4_r2w3p"]
+
+[node name="EnemyMeleeAI" type="Node"]
+script = ExtResource("1_crvsl")
+
+[node name="SelectorReactiveComposite" type="Node" parent="."]
+script = ExtResource("2_5wrro")
+
+[node name="AttackTargetInRange" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("4_r2w3p")
+
+[node name="GoToNearestTarget" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_bmjc8")

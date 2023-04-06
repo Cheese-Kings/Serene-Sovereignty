@@ -11,5 +11,12 @@ func _state_idle():
 func _state_walking():
 	troop_animator.change_animation("troops/walk")
 
+func _state_attacking():
+	troop_animator.change_animation("troops/attack")
+
 func _state_balls():
 	troop_animator.change_animation("troops/RESET")
+
+func _on_troop_animation_finished(anim_name):
+	if anim_name == "troops/attack":
+		get_parent().state_machine.set_state(TroopStateMachine.State.IDLE)

@@ -25,7 +25,12 @@ func _on_pressed():
 			
 			losers[selected_loser].queue_free()
 			troop_container.add_child(troop_instance)
+			
 		else:
 			var troop_instance = troop_to_purchase.instantiate()
 			troop_instance.position.y = 56
+			
+			randomize()
+			troop_instance.position.x = randf_range(-100, 100)
+			
 			troop_container.add_child(troop_instance)

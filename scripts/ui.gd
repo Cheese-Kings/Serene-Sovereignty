@@ -14,6 +14,9 @@ func _process(_delta):
 	
 	$"%SwordsmanBuyButton".purchase_price = GameStats.current_swordsman_cost
 	$"%SwordsmanPrice".text = str(GameStats.current_swordsman_cost)
+	
+	$"%ArcherBuyButton".purchase_price = GameStats.current_archer_cost
+	$"%ArcherPrice".text = str(GameStats.current_archer_cost)
 
 func _on_settings_pressed():
 	pass
@@ -24,6 +27,5 @@ func _on_upgrade_farm_pressed():
 		GameStats.gold -= GameStats.farm_upgrade_cost
 		GameStats.farm_upgrade_cost *= 1.5
 
-func _on_farm_house_pressed():
-	
+func _on_farm_house_button_pressed():
 	GameStats.gold += GameStats.farm_level

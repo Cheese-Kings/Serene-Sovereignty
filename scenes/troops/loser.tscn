@@ -76,3 +76,5 @@ radius = 5.0
 
 [node name="LoserAI" parent="." instance=ExtResource("3_c7gbj")]
 actor_node_path = NodePath("..")
+
+[connection signal="animation_finished" from="Sprite/TroopAnimations" to="TroopStateHandler" method="_on_troop_animation_finished"]

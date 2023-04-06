@@ -18,8 +18,6 @@ var old_pos := Vector2.ZERO
 
 func _ready():
 	_initialize_state_machine()
-	
-	# Initialize troop stats
 	_initialize_stats()
 	
 	troop_animator.speed_scale = stats.speed / 10
@@ -28,6 +26,9 @@ func _ready():
 	nav_agent.target_reached.connect(_on_target_reached)
 
 func _physics_process(_delta):
+	if stats.health <= 0:
+		queue_free()
+	
 	if navigating:
 		var next_location = nav_agent.get_next_path_position()
 		var v = (next_location - global_position).normalized() * stats.speed
@@ -45,21 +46,22 @@ func _physics_process(_delta):
 	
 	if is_instance_valid(state_handler):
 		var rounded_pos = snapped(position, Vector2(VEL_LIMIT, VEL_LIMIT))
-		if rounded_pos != old_pos:
-			state_machine.set_state(TroopStateMachine.State.WALKING)
-		else:
-			state_machine.set_state(TroopStateMachine.State.IDLE)
+		if state_machine.state != TroopStateMachine.State.ATTACKING:
+			if rounded_pos != old_pos:
+				state_machine.set_state(TroopStateMachine.State.WALKING)
+			else:
+				state_machine.set_state(TroopStateMachine.State.IDLE)
 		old_pos = rounded_pos
 		
 		var troop_state = state_machine.get_state()
 		if troop_state == TroopStateMachine.State.IDLE: state_handler._state_idle()
 		elif troop_state == TroopStateMachine.State.WALKING: state_handler._state_walking()
+		elif troop_state == TroopStateMachine.State.ATTACKING: state_handler._state_attacking()
 		elif troop_state == TroopStateMachine.State.BALLS: state_handler._state_balls()
 
 func _initialize_state_machine():
 	state_machine = TroopStateMachine.new().set_state(TroopStateMachine.State.IDLE)
 
-# Function to initialize troop stats
 func _initialize_stats():
 	stats = TroopStats.new()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=44 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tycli"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dtv6rpfwiru4p" path="res://assets/sprites/ui/toolbar3.png" id="6_a6k4p"]
 [ext_resource type="Texture2D" uid="uid://ch1a8nl25vp7q" path="res://assets/sprites/ui/Townhall.png" id="6_cvluj"]
 [ext_resource type="Texture2D" uid="uid://bkc0pxg4b56pe" path="res://assets/sprites/ui/gold.png" id="6_pvk05"]
+[ext_resource type="PackedScene" uid="uid://ssx62iqs6ncw" path="res://scenes/enemy_troops/evil_swordsman.tscn" id="7_f42yj"]
 [ext_resource type="FontFile" uid="uid://cqnbm45upx3g5" path="res://assets/fonts/digital_disco/DigitalDisco.ttf" id="7_uf3kx"]
 [ext_resource type="Texture2D" uid="uid://cscog4asfrv5c" path="res://assets/sprites/farmerhuttop2.png" id="8_gal5g"]
 [ext_resource type="Texture2D" uid="uid://blsrb4u70web0" path="res://assets/sprites/ui/settings.png" id="9_fb7ly"]
@@ -21,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://bsac0i8t6xlny" path="res://assets/sprites/ui/neutralunitbutton.png" id="17_eksvu"]
 [ext_resource type="Script" path="res://scripts/ui/unit_purchase_button.gd" id="18_22yke"]
 [ext_resource type="Texture2D" uid="uid://b1vy2ckhijpvi" path="res://assets/sprites/ui/soldierbutton.png" id="19_6diqq"]
+[ext_resource type="Texture2D" uid="uid://cwdcovmkghmlt" path="res://assets/sprites/ui/archersbutton.png" id="20_jo6hf"]
+[ext_resource type="PackedScene" uid="uid://dcftx5e646qjg" path="res://scenes/troops/archer.tscn" id="21_15gsc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
 vertices = PackedVector2Array(263, 80, 180, 80, -111, 64, 362, -280, 55, 143, 190, 147, 208, 187, -184, 187, -56, 147, -112, 118, 177, 116, 94, 117, 72, 126, 54, 129, -88, 120, -297, 170, -365, 170, -363, -272, -260, 89, -176, 64, 360, 167, 293, 167, 264, 116, -183, 150, -54, 130, -142, 121, -150, 130, -187, 130, -177, 118, -186, 88, -76, 129)
@@ -77,6 +80,14 @@ region = Rect2(0, 0, 35, 43)
 atlas = ExtResource("19_6diqq")
 region = Rect2(35, 0, 35, 43)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxph4"]
+atlas = ExtResource("20_jo6hf")
+region = Rect2(0, 0, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aimw3"]
+atlas = ExtResource("20_jo6hf")
+region = Rect2(35, 0, 35, 43)
+
 [sub_resource type="LabelSettings" id="LabelSettings_05tp1"]
 font = ExtResource("7_uf3kx")
 
@@ -120,99 +131,87 @@ position = Vector2(0, -64)
 polygon = PackedVector2Array(-51, 31, -50, 11, -37, -2, -7, -18, 0, -26, 18, -12, 33, -2, 46, 6, 52, 30, 212, 35, 217, 91, -203, 94, -197, 35)
 
 [node name="FarmShadow" type="Sprite2D" parent="GameArena"]
-position = Vector2(-144, 88.5)
+position = Vector2(-144, 88)
 texture = ExtResource("5_4oppb")
 
 [node name="FarmCrops" type="Sprite2D" parent="GameArena/FarmShadow"]
 position = Vector2(50, 3)
 texture = ExtResource("6_82cfq")
 
+[node name="Projectiles" type="CanvasGroup" parent="." groups=["ProjectileContainer"]]
+
 [node name="Troops" type="CanvasGroup" parent="." groups=["TroopContainer"]]
 
-[node name="Loser" parent="Troops" instance=ExtResource("3_wrk6b")]
-position = Vector2(120, 24)
+[node name="EvilSwordsman" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(-271, -250)
 
-[node name="Loser2" parent="Troops" instance=ExtResource("3_wrk6b")]
-position = Vector2(96, 40)
+[node name="EvilSwordsman2" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(-215, -250)
 
-[node name="Loser3" parent="Troops" instance=ExtResource("3_wrk6b")]
-position = Vector2(72, 24)
+[node name="EvilSwordsman3" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(-151, -250)
 
-[node name="Loser4" parent="Troops" instance=ExtResource("3_wrk6b")]
-position = Vector2(96, 0)
+[node name="EvilSwordsman4" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(-71, -250)
+
+[node name="EvilSwordsman5" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(25, -250)
+
+[node name="EvilSwordsman6" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(121, -250)
+
+[node name="EvilSwordsman7" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(201, -250)
+
+[node name="EvilSwordsman8" parent="Troops" instance=ExtResource("7_f42yj")]
+position = Vector2(273, -250)
 
 [node name="Swordsman" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-3, 114)
+position = Vector2(-309.022, -122.675)
 
 [node name="Swordsman2" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(0, 114)
+position = Vector2(-229.022, -122.675)
 
 [node name="Swordsman3" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-2, 119)
+position = Vector2(-125.022, -122.675)
 
 [node name="Swordsman4" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-1, 114)
+position = Vector2(-21.0218, -122.675)
 
 [node name="Swordsman5" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-2, 119)
+position = Vector2(90.9782, -122.675)
 
 [node name="Swordsman6" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-3, 115)
+position = Vector2(178.978, -122.675)
 
 [node name="Swordsman7" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-2, 114)
+position = Vector2(258.978, -122.675)
 
-[node name="Swordsman8" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(0, 121)
+[node name="Archer" parent="Troops" instance=ExtResource("21_15gsc")]
+position = Vector2(-289.492, -51.2855)
 
-[node name="Swordsman9" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-1, 117)
+[node name="Archer2" parent="Troops" instance=ExtResource("21_15gsc")]
+position = Vector2(-201.492, -51.2855)
 
-[node name="Swordsman10" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-1, 117)
+[node name="Archer3" parent="Troops" instance=ExtResource("21_15gsc")]
+position = Vector2(-65.4919, -51.2855)
 
-[node name="Swordsman11" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(21, 114)
+[node name="Archer4" parent="Troops" instance=ExtResource("21_15gsc")]
+position = Vector2(38.5081, -51.2855)
 
-[node name="Swordsman12" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(24, 114)
+[node name="Archer5" parent="Troops" instance=ExtResource("21_15gsc")]
+position = Vector2(142.508, -51.2855)
 
-[node name="Swordsman13" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(22, 119)
-
-[node name="Swordsman14" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(23, 114)
-
-[node name="Swordsman15" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(22, 119)
-
-[node name="Swordsman16" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(21, 115)
-
-[node name="Swordsman17" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(22, 114)
-
-[node name="Swordsman18" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(24, 121)
-
-[node name="Swordsman19" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(23, 117)
-
-[node name="Swordsman20" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(29, 117)
+[node name="Archer6" parent="Troops" instance=ExtResource("21_15gsc")]
+position = Vector2(262.508, -51.2855)
 
 [node name="TownHall" type="Sprite2D" parent="."]
 position = Vector2(0, 127)
 texture = ExtResource("6_cvluj")
 
-[node name="FarmHouse" type="TextureButton" parent="."]
-offset_left = -169.0
-offset_top = 64.0
-offset_right = -77.0
-offset_bottom = 115.0
-texture_normal = ExtResource("8_gal5g")
-texture_pressed = ExtResource("8_gal5g")
-stretch_mode = 4
+[node name="FarmRoof" type="Sprite2D" parent="."]
+position = Vector2(-144, 89)
+texture = ExtResource("8_gal5g")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -377,6 +376,45 @@ label_settings = SubResource("LabelSettings_3en6l")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="BuyArcher" type="Control" parent="UILayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -67.0
+offset_right = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ArcherBuyButton" type="TextureButton" parent="UILayer/UI/BuyArcher" node_paths=PackedStringArray("troop_container")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 38.0
+offset_bottom = 66.0
+texture_normal = SubResource("AtlasTexture_hxph4")
+texture_pressed = SubResource("AtlasTexture_aimw3")
+stretch_mode = 5
+script = ExtResource("18_22yke")
+troop_container = NodePath("../../../../Troops")
+troop_to_purchase = ExtResource("21_15gsc")
+
+[node name="ArcherPrice" type="Label" parent="UILayer/UI/BuyArcher"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 38.0
+offset_bottom = 24.0
+text = "100"
+label_settings = SubResource("LabelSettings_3en6l")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="GoldCount" type="Control" parent="UILayer/UI"]
 anchors_preset = 0
 offset_left = 191.0
@@ -446,10 +484,19 @@ label_settings = SubResource("LabelSettings_d8den")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="FarmHouseButton" type="TextureButton" parent="UILayer/UI"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 256.0
+offset_right = 310.0
+offset_bottom = 307.0
+toggle_mode = true
+
 [connection signal="area_entered" from="GameArena/TownHall" to="." method="_on_town_hall_area_entered"]
 [connection signal="area_exited" from="GameArena/TownHall" to="." method="_on_town_hall_area_exited"]
-[connection signal="pressed" from="FarmHouse" to="UILayer/UI" method="_on_farm_house_pressed"]
 [connection signal="pressed" from="UILayer/UI/Settings" to="UILayer/UI" method="_on_settings_pressed"]
 [connection signal="pressed" from="UILayer/UI/UpgradeFarm" to="UILayer/UI" method="_on_upgrade_farm_pressed"]
 [connection signal="pressed" from="UILayer/UI/BuyLoser/LoserBuyButton" to="UILayer/UI/BuyLoser/LoserBuyButton" method="_on_pressed"]
 [connection signal="pressed" from="UILayer/UI/BuySwordsman/SwordsmanBuyButton" to="UILayer/UI/BuySwordsman/SwordsmanBuyButton" method="_on_pressed"]
+[connection signal="pressed" from="UILayer/UI/BuyArcher/ArcherBuyButton" to="UILayer/UI/BuyArcher/ArcherBuyButton" method="_on_pressed"]
+[connection signal="pressed" from="UILayer/UI/FarmHouseButton" to="UILayer/UI" method="_on_farm_house_button_pressed"]
