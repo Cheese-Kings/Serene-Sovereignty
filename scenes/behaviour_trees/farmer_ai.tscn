@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2w1sb5tct6dl"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_oq0cy"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_oenit"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_81jlg"]
+[ext_resource type="Script" path="res://scripts/ai/conditions/is_daylight.gd" id="4_u6ngf"]
+[ext_resource type="Script" path="res://scripts/ai/actions/move_to_location.gd" id="5_rluio"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_random_area.gd" id="6_aeg5n"]
+[ext_resource type="Script" path="res://scripts/ai/actions/troop_specific/drop_earnings_at_farm_house.gd" id="7_68sdt"]
+
+[node name="FarmerAI" type="Node"]
+script = ExtResource("1_oq0cy")
+
+[node name="SelectorComposite" type="Node" parent="."]
+script = ExtResource("2_oenit")
+
+[node name="GoToHouseDuringNight" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_81jlg")
+
+[node name="CheckForNight" type="Node" parent="SelectorComposite/GoToHouseDuringNight"]
+script = ExtResource("4_u6ngf")
+want_day = false
+
+[node name="GoToHouse" type="Node" parent="SelectorComposite/GoToHouseDuringNight"]
+script = ExtResource("5_rluio")
+destination = Vector2(0, 170)
+
+[node name="FarmDuringDay" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_81jlg")
+
+[node name="CheckForDay" type="Node" parent="SelectorComposite/FarmDuringDay"]
+script = ExtResource("4_u6ngf")
+
+[node name="GoFarmSomewhere" type="Node" parent="SelectorComposite/FarmDuringDay"]
+script = ExtResource("6_aeg5n")
+move_range = Vector2(300, 120)
+
+[node name="DropEarningsAtFarmHouse" type="Node" parent="SelectorComposite/FarmDuringDay"]
+script = ExtResource("7_68sdt")
+destination = Vector2(-144, 89)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcftx5e646qjg"]
+[gd_scene load_steps=13 format=3 uid="uid://dcftx5e646qjg"]
 
 [ext_resource type="Script" path="res://scripts/troops/archer.gd" id="1_cvv23"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_o1y7w"]
@@ -6,6 +6,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="3_mpum1"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="4_imqf6"]
 [ext_resource type="PackedScene" uid="uid://kl67wf7ba2tj" path="res://scenes/behaviour_trees/ranged_ai.tscn" id="6_1k37s"]
+[ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_6l573"]
 [ext_resource type="Script" path="res://scripts/blackboards/ranged_attack_troop.gd" id="6_58cpp"]
 [ext_resource type="PackedScene" uid="uid://k764pyar6hpr" path="res://scenes/projectiles/archer_arrow.tscn" id="7_ok6lb"]
 
@@ -74,6 +75,7 @@ script = ExtResource("4_imqf6")
 path_max_distance = 25.0
 avoidance_enabled = true
 radius = 5.0
+script = ExtResource("6_6l573")
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("6_58cpp")

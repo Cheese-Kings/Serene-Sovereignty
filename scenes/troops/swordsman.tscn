@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgojqyy8rbv2g"]
+[gd_scene load_steps=12 format=3 uid="uid://bgojqyy8rbv2g"]
 
 [ext_resource type="Script" path="res://scripts/troops/swordsman.gd" id="1_jtyms"]
 [ext_resource type="Texture2D" uid="uid://c0i42whkvme31" path="res://assets/sprites/troops/soldier.png" id="2_7q06d"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_ginl8"]
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="3_316mx"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_v0nho"]
+[ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_6culh"]
 [ext_resource type="Script" path="res://scripts/blackboards/attack_troop.gd" id="6_6y2uo"]
 [ext_resource type="PackedScene" uid="uid://bo42u0cl77ryc" path="res://scenes/behaviour_trees/melee_ai.tscn" id="7_j0tdu"]
 
@@ -74,6 +75,7 @@ target_desired_distance = 20.0
 path_max_distance = 25.0
 avoidance_enabled = true
 radius = 5.0
+script = ExtResource("6_6culh")
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("6_6y2uo")

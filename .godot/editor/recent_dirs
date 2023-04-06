@@ -1,9 +1,10 @@
+res://scripts/ai/actions/troop_specific
+res://scripts
+res://scripts/troops
 res://scripts/projectiles
 res://scripts/blackboards
-res://scripts/troops
 res://assets/anim_libraries
 res://scripts/ui
-res://scripts
 res://assets/sprites/ui
 res://scripts/autoload
 res://
