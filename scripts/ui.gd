@@ -20,6 +20,12 @@ func _process(_delta):
 	
 	$"%FarmerBuyButton".purchase_price = GameStats.current_farmer_cost
 	$"%FarmerPrice".text = str(GameStats.current_farmer_cost)
+	
+	$"%WizardBuyButton".purchase_price = GameStats.current_wizard_cost
+	$"%WizardPrice".text = str(GameStats.current_wizard_cost)
+	
+	$"%ShieldmanBuyButton".purchase_price = GameStats.current_shieldman_cost
+	$"%ShieldmanPrice".text = str(GameStats.current_shieldman_cost)
 
 func _on_settings_pressed():
 	pass

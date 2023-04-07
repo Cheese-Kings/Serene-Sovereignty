@@ -16,6 +16,10 @@ var current_archer_cost: int = 20
 
 var current_farmer_cost: int = 20
 
+var current_wizard_cost: int = 600
+
+var current_shieldman_cost: int = 100
+
 
 func _physics_process(_delta):
 	var loser_count = get_tree().get_nodes_in_group("Troop").size()

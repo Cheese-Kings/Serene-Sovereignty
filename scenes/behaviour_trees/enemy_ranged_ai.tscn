@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://de81qamu5ywgk"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_x1pq0"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_g6ern"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_nearest_target_at_distance.gd" id="4_ccukg"]
+[ext_resource type="Script" path="res://scripts/ai/actions/shoot_target_in_range.gd" id="7_d686l"]
+
+[node name="EnemyRangedAI" type="Node"]
+script = ExtResource("1_x1pq0")
+
+[node name="SelectorReactiveComposite" type="Node" parent="."]
+script = ExtResource("2_g6ern")
+
+[node name="ShootTargetInRange" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("7_d686l")
+
+[node name="GoToNearestTargetAtDistance" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("4_ccukg")

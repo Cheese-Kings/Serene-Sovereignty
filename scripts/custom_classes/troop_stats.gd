@@ -7,7 +7,8 @@ enum Role {
 	Swordsman,
 	Archer,
 	Farmer,
-	Wizard
+	Wizard,
+	Shieldman
 }
 
 

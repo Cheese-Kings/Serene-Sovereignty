@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kl67wf7ba2tj"]
+[gd_scene load_steps=9 format=3 uid="uid://kl67wf7ba2tj"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_tiu1q"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_6h1ae"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/ai/conditions/is_daylight.gd" id="4_r3an0"]
 [ext_resource type="Script" path="res://scripts/ai/actions/move_to_location.gd" id="5_gwk4b"]
 [ext_resource type="Script" path="res://scripts/ai/actions/troop_specific/get_to_attack_position.gd" id="6_fmgdh"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_nearest_target_at_distance.gd" id="7_3i6if"]
 [ext_resource type="Script" path="res://scripts/ai/actions/shoot_target_in_range.gd" id="7_klwt3"]
 
 [node name="RangedAI" type="Node"]
@@ -33,7 +34,9 @@ want_day = false
 
 [node name="MoveToAttackPosition" type="Node" parent="SelectorComposite/PrepareForAttackAtNight"]
 script = ExtResource("6_fmgdh")
-destination = Vector2(0, -20)
+
+[node name="GoToNearestTargetAtDistance" type="Node" parent="SelectorComposite/PrepareForAttackAtNight"]
+script = ExtResource("7_3i6if")
 
 [node name="ShootTargetInRange" type="Node" parent="SelectorComposite/PrepareForAttackAtNight"]
 script = ExtResource("7_klwt3")

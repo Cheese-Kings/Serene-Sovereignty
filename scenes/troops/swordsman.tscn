@@ -74,13 +74,13 @@ script = ExtResource("5_v0nho")
 target_desired_distance = 20.0
 path_max_distance = 25.0
 avoidance_enabled = true
-radius = 5.0
 script = ExtResource("6_6culh")
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("6_6y2uo")
 troop_group = "Swordsman"
 target_troop_group = "EnemyTroop"
+ranged_attack_position_y = -80.0
 
 [node name="MeleeAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("7_j0tdu")]
 actor_node_path = NodePath("..")

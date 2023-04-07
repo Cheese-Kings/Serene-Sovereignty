@@ -11,7 +11,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		var can_attack = false
 		
 		for target in get_tree().get_nodes_in_group(blackboard.target_troop_group):
-			if actor.global_position.distance_to(target.global_position) <= actor.stats.attack_range:
+			if actor.global_position.distance_to(target.global_position) <= actor.stats.attack_range + 5:
 				targets_in_range.append(target)
 		
 		for target in targets_in_range:

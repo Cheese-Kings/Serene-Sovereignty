@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=56 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tycli"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dtv6rpfwiru4p" path="res://assets/sprites/ui/toolbar3.png" id="6_a6k4p"]
 [ext_resource type="Texture2D" uid="uid://ch1a8nl25vp7q" path="res://assets/sprites/ui/Townhall.png" id="6_cvluj"]
 [ext_resource type="Texture2D" uid="uid://bkc0pxg4b56pe" path="res://assets/sprites/ui/gold.png" id="6_pvk05"]
-[ext_resource type="PackedScene" uid="uid://ssx62iqs6ncw" path="res://scenes/enemy_troops/evil_swordsman.tscn" id="7_f42yj"]
 [ext_resource type="FontFile" uid="uid://cqnbm45upx3g5" path="res://assets/fonts/digital_disco/DigitalDisco.ttf" id="7_uf3kx"]
 [ext_resource type="Texture2D" uid="uid://cscog4asfrv5c" path="res://assets/sprites/farmerhuttop2.png" id="8_gal5g"]
 [ext_resource type="Texture2D" uid="uid://blsrb4u70web0" path="res://assets/sprites/ui/settings.png" id="9_fb7ly"]
@@ -26,12 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://ih5jbfvxi6dg" path="res://assets/sprites/ui/extensions.png" id="21_yf8vv"]
 [ext_resource type="Texture2D" uid="uid://cng8foy0jed4t" path="res://assets/sprites/ui/farmerbutton.png" id="23_fvybc"]
 [ext_resource type="PackedScene" uid="uid://dlgekwykox87l" path="res://scenes/troops/farmer.tscn" id="24_gjf34"]
+[ext_resource type="Texture2D" uid="uid://yy08p2eawtr5" path="res://assets/sprites/ui/wizzardbutton.png" id="26_3xdrc"]
+[ext_resource type="PackedScene" uid="uid://bir6ecy8c2vcm" path="res://scenes/troops/wizard.tscn" id="26_uj1yr"]
 [ext_resource type="FontFile" uid="uid://dft3ar1si3as5" path="res://assets/fonts/pixels/Pixels.ttf" id="27_d15pn"]
+[ext_resource type="PackedScene" uid="uid://kph3qwuhnkt" path="res://scenes/troops/shieldman.tscn" id="28_kq3j7"]
+[ext_resource type="Texture2D" uid="uid://baamd4roobuoc" path="res://assets/sprites/ui/shieldmenbutton.png" id="28_lrui6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
-vertices = PackedVector2Array(55, 143, 190, 147, 208, 187, -184, 187, -56, 147, -150, 130, -187, 130, -186, 88, -142, 121, -297, 170, -365, 170, -363, -272, -260, 89, 362, -280, -88, 120, 94, 117, 72, 126, 54, 129, -54, 130, -76, 129, 180, 80, 360, 167, 293, 167, 264, 116, 263, 80, -183, 150, 177, 116)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 11, 13, 7), PackedInt32Array(8, 7, 13, 14), PackedInt32Array(15, 16, 17, 18, 19, 14, 13, 20), PackedInt32Array(13, 21, 22, 23, 24), PackedInt32Array(3, 25, 4), PackedInt32Array(0, 4, 18, 17), PackedInt32Array(20, 26, 15), PackedInt32Array(20, 13, 24)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-365, 170, -363, -272, 362, -280, 360, 167, 293, 167, 264, 116, 263, 80, 180, 80, 177, 116, 94, 117, 72, 126, 54, 129, 55, 143, 190, 147, 208, 187, -184, 187, -183, 150, -56, 147, -54, 130, -76, 129, -88, 120, -142, 121, -150, 130, -187, 130, -186, 88, -260, 89, -297, 170)])
+vertices = PackedVector2Array(55, 143, 190, 147, 208, 187, -184, 187, -56, 147, -289, 177, -365, 179, -363, -272, -260, 89, 362, -280, -186, 88, -150, 130, -187, 130, -142, 121, -88, 120, 94, 117, 72, 126, 54, 129, -54, 130, -76, 129, 180, 80, 362, 177, 293, 180, 264, 116, 263, 80, -183, 150, 177, 116)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(11, 12, 10, 13), PackedInt32Array(13, 10, 9, 14), PackedInt32Array(15, 16, 17, 18, 19, 14, 9, 20), PackedInt32Array(9, 21, 22, 23, 24), PackedInt32Array(3, 25, 4), PackedInt32Array(0, 4, 18, 17), PackedInt32Array(20, 26, 15), PackedInt32Array(20, 9, 24)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-365, 179, -363, -272, 362, -280, 362, 177, 293, 180, 264, 116, 263, 80, 180, 80, 177, 116, 94, 117, 72, 126, 54, 129, 55, 143, 190, 147, 208, 187, -184, 187, -183, 150, -56, 147, -54, 130, -76, 129, -88, 120, -142, 121, -150, 130, -187, 130, -186, 88, -260, 89, -289, 177)])
 
 [sub_resource type="InputEventKey" id="InputEventKey_23oa3"]
 device = -1
@@ -101,6 +104,22 @@ region = Rect2(0, 0, 35, 43)
 atlas = ExtResource("23_fvybc")
 region = Rect2(35, 0, 35, 43)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x73fy"]
+atlas = ExtResource("26_3xdrc")
+region = Rect2(0, 0, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p0tk"]
+atlas = ExtResource("26_3xdrc")
+region = Rect2(35, 0, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4oym"]
+atlas = ExtResource("28_lrui6")
+region = Rect2(0, 0, 35, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtugd"]
+atlas = ExtResource("28_lrui6")
+region = Rect2(35, 0, 35, 43)
+
 [sub_resource type="LabelSettings" id="LabelSettings_05tp1"]
 font = ExtResource("7_uf3kx")
 
@@ -152,69 +171,6 @@ texture = ExtResource("6_82cfq")
 [node name="Projectiles" type="CanvasGroup" parent="." groups=["ProjectileContainer"]]
 
 [node name="Troops" type="CanvasGroup" parent="." groups=["TroopContainer"]]
-
-[node name="EvilSwordsman" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(-271, -250)
-
-[node name="EvilSwordsman2" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(-215, -250)
-
-[node name="EvilSwordsman3" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(-151, -250)
-
-[node name="EvilSwordsman4" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(-71, -250)
-
-[node name="EvilSwordsman5" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(25, -250)
-
-[node name="EvilSwordsman6" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(121, -250)
-
-[node name="EvilSwordsman7" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(201, -250)
-
-[node name="EvilSwordsman8" parent="Troops" instance=ExtResource("7_f42yj")]
-position = Vector2(273, -250)
-
-[node name="Swordsman" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-309.022, -122.675)
-
-[node name="Swordsman2" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-229.022, -122.675)
-
-[node name="Swordsman3" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-125.022, -122.675)
-
-[node name="Swordsman4" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(-21.0218, -122.675)
-
-[node name="Swordsman5" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(90.9782, -122.675)
-
-[node name="Swordsman6" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(178.978, -122.675)
-
-[node name="Swordsman7" parent="Troops" instance=ExtResource("4_sf3di")]
-position = Vector2(258.978, -122.675)
-
-[node name="Archer" parent="Troops" instance=ExtResource("21_15gsc")]
-position = Vector2(-289.492, -51.2855)
-
-[node name="Archer2" parent="Troops" instance=ExtResource("21_15gsc")]
-position = Vector2(-201.492, -51.2855)
-
-[node name="Archer3" parent="Troops" instance=ExtResource("21_15gsc")]
-position = Vector2(-65.4919, -51.2855)
-
-[node name="Archer4" parent="Troops" instance=ExtResource("21_15gsc")]
-position = Vector2(38.5081, -51.2855)
-
-[node name="Archer5" parent="Troops" instance=ExtResource("21_15gsc")]
-position = Vector2(142.508, -51.2855)
-
-[node name="Archer6" parent="Troops" instance=ExtResource("21_15gsc")]
-position = Vector2(262.508, -51.2855)
 
 [node name="TownHall" type="Sprite2D" parent="."]
 position = Vector2(0, 127)
@@ -386,6 +342,7 @@ troop_container = NodePath("../../../../Troops")
 troop_to_purchase = ExtResource("4_sf3di")
 
 [node name="Extension" type="TextureRect" parent="UILayer/UI/BuySwordsman"]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 6.0
 offset_right = 38.0
@@ -433,6 +390,7 @@ troop_container = NodePath("../../../../Troops")
 troop_to_purchase = ExtResource("21_15gsc")
 
 [node name="Extension" type="TextureRect" parent="UILayer/UI/BuyArcher"]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 6.0
 offset_right = 38.0
@@ -480,6 +438,7 @@ troop_container = NodePath("../../../../Troops")
 troop_to_purchase = ExtResource("24_gjf34")
 
 [node name="Extension" type="TextureRect" parent="UILayer/UI/BuyFarmer"]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 6.0
 offset_right = 38.0
@@ -488,6 +447,102 @@ texture = ExtResource("21_yf8vv")
 stretch_mode = 5
 
 [node name="FarmerPrice" type="Label" parent="UILayer/UI/BuyFarmer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_3en6l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyWizard" type="Control" parent="UILayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = -67.0
+offset_right = 104.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WizardBuyButton" type="TextureButton" parent="UILayer/UI/BuyWizard" node_paths=PackedStringArray("troop_container")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 38.0
+offset_bottom = 66.0
+texture_normal = SubResource("AtlasTexture_x73fy")
+texture_pressed = SubResource("AtlasTexture_0p0tk")
+stretch_mode = 5
+script = ExtResource("18_22yke")
+troop_container = NodePath("../../../../Troops")
+troop_to_purchase = ExtResource("26_uj1yr")
+
+[node name="Extension" type="TextureRect" parent="UILayer/UI/BuyWizard"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 38.0
+offset_bottom = 21.0
+texture = ExtResource("21_yf8vv")
+stretch_mode = 5
+
+[node name="WizardPrice" type="Label" parent="UILayer/UI/BuyWizard"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 21.0
+text = "100"
+label_settings = SubResource("LabelSettings_3en6l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyShieldman" type="Control" parent="UILayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -67.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ShieldmanBuyButton" type="TextureButton" parent="UILayer/UI/BuyShieldman" node_paths=PackedStringArray("troop_container")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 38.0
+offset_bottom = 66.0
+texture_normal = SubResource("AtlasTexture_t4oym")
+texture_pressed = SubResource("AtlasTexture_xtugd")
+stretch_mode = 5
+script = ExtResource("18_22yke")
+troop_container = NodePath("../../../../Troops")
+troop_to_purchase = ExtResource("28_kq3j7")
+
+[node name="Extension" type="TextureRect" parent="UILayer/UI/BuyShieldman"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 38.0
+offset_bottom = 21.0
+texture = ExtResource("21_yf8vv")
+stretch_mode = 5
+
+[node name="ShieldmanPrice" type="Label" parent="UILayer/UI/BuyShieldman"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 4.0
@@ -585,4 +640,6 @@ toggle_mode = true
 [connection signal="pressed" from="UILayer/UI/BuySwordsman/SwordsmanBuyButton" to="UILayer/UI/BuySwordsman/SwordsmanBuyButton" method="_on_pressed"]
 [connection signal="pressed" from="UILayer/UI/BuyArcher/ArcherBuyButton" to="UILayer/UI/BuyArcher/ArcherBuyButton" method="_on_pressed"]
 [connection signal="pressed" from="UILayer/UI/BuyFarmer/FarmerBuyButton" to="UILayer/UI/BuyFarmer/FarmerBuyButton" method="_on_pressed"]
+[connection signal="pressed" from="UILayer/UI/BuyWizard/WizardBuyButton" to="UILayer/UI/BuyWizard/WizardBuyButton" method="_on_pressed"]
+[connection signal="pressed" from="UILayer/UI/BuyShieldman/ShieldmanBuyButton" to="UILayer/UI/BuyShieldman/ShieldmanBuyButton" method="_on_pressed"]
 [connection signal="pressed" from="UILayer/UI/FarmHouseButton" to="UILayer/UI" method="_on_farm_house_button_pressed"]

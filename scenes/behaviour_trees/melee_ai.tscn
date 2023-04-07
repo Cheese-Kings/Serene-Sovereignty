@@ -34,7 +34,6 @@ want_day = false
 
 [node name="MoveToAttackPosition" type="Node" parent="SelectorComposite/AttackAtNight"]
 script = ExtResource("6_hip02")
-destination = Vector2(0, -80)
 
 [node name="GoToNearestTarget" type="Node" parent="SelectorComposite/AttackAtNight"]
 script = ExtResource("7_nqkwb")

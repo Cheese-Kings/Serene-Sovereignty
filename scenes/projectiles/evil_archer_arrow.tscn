@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://vfky5ho0nkbg"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/archer_arrow.gd" id="1_lc0s5"]
+[ext_resource type="Texture2D" uid="uid://dw3re6a0bs6k5" path="res://assets/sprites/projectiles/noheadredarrow.png" id="2_dd17m"]
+[ext_resource type="Texture2D" uid="uid://dyks07ax4aje1" path="res://assets/sprites/projectiles/redarrows.png" id="2_ow2so"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_com5q"]
+size = Vector2(10, 2)
+
+[node name="EvilArcherArrow" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_lc0s5")
+landed_texture = ExtResource("2_dd17m")
+target_type = "Troop"
+attack_power = 1
+move_speed = 75
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_com5q")
+debug_color = Color(0.87451, 0, 0.913725, 0.419608)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_ow2so")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

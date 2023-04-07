@@ -7,9 +7,10 @@
 size = Vector2(10, 2)
 
 [node name="ArcherArrow" type="Area2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_3m2b3")
+target_type = "EnemyTroop"
 attack_power = 1
 move_speed = 75
 

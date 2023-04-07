@@ -30,7 +30,7 @@ troop_animator = NodePath("../Sprite/TroopAnimations")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_228lp")
-disabled = true
+one_way_collision = true
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="TownHallDetection" type="Area2D" parent="."]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckfhoqecu2exm"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_ctv0t"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_vgpyr"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_nearest_target.gd" id="7_x5xn0"]
+
+[node name="EnemySuicidalAI" type="Node"]
+script = ExtResource("1_ctv0t")
+
+[node name="SelectorComposite" type="Node" parent="."]
+script = ExtResource("2_vgpyr")
+
+[node name="GoToNearestTarget" type="Node" parent="SelectorComposite"]
+script = ExtResource("7_x5xn0")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://6fpj2meo0pnc"]
+
+[ext_resource type="Script" path="res://scripts/troops/shieldman.gd" id="1_7yvhn"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_6xag2"]
+[ext_resource type="Texture2D" uid="uid://mmtl21h6fuiu" path="res://assets/sprites/troops/redshieldman.png" id="3_8rfr2"]
+[ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="4_lphig"]
+[ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_l1oii"]
+[ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_h7i5d"]
+[ext_resource type="Script" path="res://scripts/blackboards/attack_troop.gd" id="7_qen6q"]
+[ext_resource type="PackedScene" uid="uid://ckfhoqecu2exm" path="res://scenes/behaviour_trees/enemy_suicidal_ai.tscn" id="8_04bpu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynbj7"]
+size = Vector2(6, 10)
+
+[sub_resource type="Curve" id="Curve_3jkfk"]
+_data = [Vector2(0, 0.496933), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="EvilShieldman" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "troop_animator", "state_handler") groups=["EnemyTroop", "EvilShieldman"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_7yvhn")
+nav_agent = NodePath("NavigationAgent")
+troop_animator = NodePath("Sprite/AnimationPlayer")
+state_handler = NodePath("TroopStateHandler")
+
+[node name="TroopStateHandler" type="Node" parent="." node_paths=PackedStringArray("troop_animator")]
+script = ExtResource("2_6xag2")
+troop_animator = NodePath("../Sprite/AnimationPlayer")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ynbj7")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="PathLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+width_curve = SubResource("Curve_3jkfk")
+default_color = Color(1, 0, 0, 0.584314)
+
+[node name="DestinationLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(0, 0.917647, 1, 0.368627)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1)
+texture = ExtResource("3_8rfr2")
+region_enabled = true
+region_rect = Rect2(0, 10, 32, 22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"troops": ExtResource("4_lphig")
+}
+script = ExtResource("5_l1oii")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+target_desired_distance = 20.0
+path_max_distance = 25.0
+avoidance_enabled = true
+script = ExtResource("6_h7i5d")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("7_qen6q")
+troop_group = "EvilShieldman"
+target_troop_group = "Troop"
+
+[node name="EnemySuicidalAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("8_04bpu")]
+actor_node_path = NodePath("..")
+blackboard = NodePath("../Blackboard")
+
+[connection signal="animation_finished" from="Sprite/AnimationPlayer" to="TroopStateHandler" method="_on_troop_animation_finished"]

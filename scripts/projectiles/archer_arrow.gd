@@ -1,9 +1,10 @@
 extends "res://scripts/projectiles/projectile.gd"
 
 
-@onready var sprite = $Sprite
+@export var landed_texture = preload("res://assets/sprites/projectiles/noheadarrow.png")
 
-var landed_texture = preload("res://assets/sprites/projectiles/noheadarrow.png")
+@onready var sprite = $Sprite
+@onready var collider = $Collider
 
 
 func _process(_delta):
@@ -12,4 +13,5 @@ func _process(_delta):
 
 func _reached_target():
 	rotation = 90
+	collider.set_deferred("disabled", true)
 	sprite.set_texture(landed_texture)

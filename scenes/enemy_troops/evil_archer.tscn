@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=3 uid="uid://b3m18p3rs5j4p"]
+
+[ext_resource type="Script" path="res://scripts/troops/archer.gd" id="1_b56t2"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_67syl"]
+[ext_resource type="Texture2D" uid="uid://cgbh1wle018oy" path="res://assets/sprites/troops/redarchers.png" id="3_qjhxw"]
+[ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="4_8ck3x"]
+[ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_kbxjl"]
+[ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_l6qsj"]
+[ext_resource type="Script" path="res://scripts/blackboards/ranged_attack_troop.gd" id="7_kpd58"]
+[ext_resource type="Script" path="res://scripts/projectiles/archer_arrow.gd" id="8_omsbj"]
+[ext_resource type="PackedScene" uid="uid://de81qamu5ywgk" path="res://scenes/behaviour_trees/enemy_ranged_ai.tscn" id="9_nmvtn"]
+[ext_resource type="Texture2D" uid="uid://dw3re6a0bs6k5" path="res://assets/sprites/projectiles/noheadredarrow.png" id="9_wetkm"]
+[ext_resource type="Texture2D" uid="uid://dyks07ax4aje1" path="res://assets/sprites/projectiles/redarrows.png" id="10_rp323"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynbj7"]
+size = Vector2(8, 12)
+
+[sub_resource type="Curve" id="Curve_3jkfk"]
+_data = [Vector2(0, 0.496933), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_com5q"]
+size = Vector2(10, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_smovg"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(0, 0, 18, 17, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("EvilArcherArrow", "collision_layer", "collision_mask", "script", "landed_texture", "target_type", "attack_power", "move_speed", "Area2D", "Collider", "shape", "debug_color", "CollisionShape2D", "Sprite", "rotation", "texture", "Sprite2D", "_on_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 8, 0, -1, 7, 1, 0, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0, 0, 0, 12, 9, -1, 2, 10, 6, 11, 7, 0, 0, 0, 16, 13, -1, 2, 14, 8, 15, 9, 0),
+"variants": [2, ExtResource("8_omsbj"), ExtResource("9_wetkm"), "Troop", 1, 75, SubResource("RectangleShape2D_com5q"), Color(0.87451, 0, 0.913725, 0.419608), 1.5708, ExtResource("10_rp323")],
+"version": 3
+}
+
+[node name="EvilArcher" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "troop_animator", "state_handler") groups=["EnemyTroop", "EvilArcher"]]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_b56t2")
+nav_agent = NodePath("NavigationAgent")
+troop_animator = NodePath("Sprite/AnimationPlayer")
+state_handler = NodePath("TroopStateHandler")
+
+[node name="TroopStateHandler" type="Node" parent="." node_paths=PackedStringArray("troop_animator")]
+script = ExtResource("2_67syl")
+troop_animator = NodePath("../Sprite/AnimationPlayer")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ynbj7")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="PathLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+width_curve = SubResource("Curve_3jkfk")
+default_color = Color(1, 0, 0, 0.584314)
+
+[node name="DestinationLine" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(0, 0.917647, 1, 0.368627)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1)
+texture = ExtResource("3_qjhxw")
+region_enabled = true
+region_rect = Rect2(0, 10, 32, 22)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+"troops": ExtResource("4_8ck3x")
+}
+script = ExtResource("5_kbxjl")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+path_max_distance = 25.0
+avoidance_enabled = true
+script = ExtResource("6_l6qsj")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("7_kpd58")
+projectile = SubResource("PackedScene_smovg")
+troop_group = "EvilArcher"
+target_troop_group = "Troop"
+
+[node name="EnemyRangedAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("9_nmvtn")]
+actor_node_path = NodePath("..")
+blackboard = NodePath("../Blackboard")
+
+[connection signal="animation_finished" from="Sprite/AnimationPlayer" to="TroopStateHandler" method="_on_troop_animation_finished"]

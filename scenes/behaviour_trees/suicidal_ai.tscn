@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bknf03nqmgy45"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_rdfnv"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_5yi0f"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_e8e8b"]
+[ext_resource type="Script" path="res://scripts/ai/conditions/is_daylight.gd" id="4_cmg05"]
+[ext_resource type="Script" path="res://scripts/ai/actions/move_to_location.gd" id="5_p8r3q"]
+[ext_resource type="Script" path="res://scripts/ai/actions/troop_specific/get_to_attack_position.gd" id="6_eovkd"]
+[ext_resource type="Script" path="res://scripts/ai/actions/go_to_nearest_target.gd" id="7_xxhxi"]
+
+[node name="SuicidalAI" type="Node"]
+script = ExtResource("1_rdfnv")
+
+[node name="SelectorComposite" type="Node" parent="."]
+script = ExtResource("2_5yi0f")
+
+[node name="GoToHouseDuringDay" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_e8e8b")
+
+[node name="CheckForDay" type="Node" parent="SelectorComposite/GoToHouseDuringDay"]
+script = ExtResource("4_cmg05")
+
+[node name="GoToHouse" type="Node" parent="SelectorComposite/GoToHouseDuringDay"]
+script = ExtResource("5_p8r3q")
+destination = Vector2(0, 170)
+
+[node name="AttackAtNight" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_e8e8b")
+
+[node name="IsDaylight" type="Node" parent="SelectorComposite/AttackAtNight"]
+script = ExtResource("4_cmg05")
+want_day = false
+
+[node name="MoveToAttackPosition" type="Node" parent="SelectorComposite/AttackAtNight"]
+script = ExtResource("6_eovkd")
+destination = Vector2(0, -80)
+
+[node name="GoToNearestTarget" type="Node" parent="SelectorComposite/AttackAtNight"]
+script = ExtResource("7_xxhxi")
