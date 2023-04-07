@@ -1,3 +1,8 @@
+CollisionShape2D
+CollisionPolygon2D
+StaticBody2D
+Sprite2D
+EnemySpawner
 GoToNearestTargetAtDistance
 ShootTargetInRange
 SelectorReactiveComposite
@@ -5,8 +10,6 @@ TextureRect
 MoveToLocation
 GoToRandomArea
 CanvasGroup
-CollisionShape2D
-Sprite2D
 Area2D
 Blackboard
 SequenceComposite
@@ -20,7 +23,6 @@ TextureButton
 Label
 Node2D
 Control
-CollisionPolygon2D
 Button
 CanvasLayer
 Node3D
@@ -28,5 +30,3 @@ Line2D
 SequenceStarComposite
 IsDaylight
 SelectorRandomComposite
-IsCertainTime
-ConditionLeaf

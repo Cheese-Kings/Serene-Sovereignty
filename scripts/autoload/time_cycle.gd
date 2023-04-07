@@ -1,6 +1,8 @@
 extends Node
 
 
+signal turned_night
+
 enum TimeState {
 	Day,
 	Sunset,
