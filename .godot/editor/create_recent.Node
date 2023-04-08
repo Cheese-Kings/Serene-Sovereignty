@@ -1,8 +1,12 @@
+Button
+Label
+Panel
+Control
+EnemySpawner
 CollisionShape2D
 CollisionPolygon2D
 StaticBody2D
 Sprite2D
-EnemySpawner
 GoToNearestTargetAtDistance
 ShootTargetInRange
 SelectorReactiveComposite
@@ -20,13 +24,9 @@ AnimationPlayer
 AnimationTree
 Troop
 TextureButton
-Label
 Node2D
-Control
-Button
 CanvasLayer
 Node3D
 Line2D
 SequenceStarComposite
 IsDaylight
-SelectorRandomComposite

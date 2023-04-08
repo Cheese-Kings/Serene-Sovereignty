@@ -22,6 +22,7 @@ LoadingScreen="*res://addons/arc_loader/loading_screen.tscn"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 TimeCycle="*res://scripts/autoload/time_cycle.gd"
 GameStats="*res://scripts/autoload/game_stats.gd"
+SaveSystem="*res://scripts/autoload/save_system.gd"
 
 [display]
 

@@ -1,5 +1,5 @@
 class_name EnemySpawner
-extends Node
+extends Node2D
 
 
 const SWORDSMAN_CAP = 40
@@ -23,10 +23,11 @@ func spawn_troops():
 	var day_count = GameStats.current_day
 	var troop_container = get_tree().get_first_node_in_group("TroopContainer")
 	
-	var swordsman_count = 1 + floor(day_count / 1.3)
-	#if swordsman_count > SWORDSMAN_CAP: swordsman_count = SWORDSMAN_CAP
-	for num in range(swordsman_count):
-		troops_to_spawn.append(swordsman.instantiate())
+	if day_count >= 2:
+		var swordsman_count = floor(day_count / 1.3)
+		#if swordsman_count > SWORDSMAN_CAP: swordsman_count = SWORDSMAN_CAP
+		for num in range(swordsman_count):
+			troops_to_spawn.append(swordsman.instantiate())
 	
 	if day_count >= 10:
 		var archer_count = -4 + floor(day_count / 1.8)
@@ -50,5 +51,5 @@ func spawn_troops():
 	for troop in troops_to_spawn:
 		randomize()
 		troop.position.x = randi_range(-300, 300)
-		troop.position.y = -230
+		troop.position.y = -184
 		troop_container.add_child(troop)

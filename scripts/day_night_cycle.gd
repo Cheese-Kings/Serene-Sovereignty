@@ -9,7 +9,19 @@ extends Node2D
 
 func _ready():
 	animation_player.play("Sunset")
-	day_night_timer.start()
+	
+	if TimeCycle.current_time == TimeCycle.TimeState.Day:
+		day_night_timer.start()
+		TimeCycle.is_daylight = true
+	elif TimeCycle.current_time == TimeCycle.TimeState.Night:
+		day_night_timer.start()
+		TimeCycle.is_daylight = false
+	if TimeCycle.current_time == TimeCycle.TimeState.Sunrise:
+		sunset_sunrise_timer.start()
+		TimeCycle.is_daylight = true
+	elif TimeCycle.current_time == TimeCycle.TimeState.Sunset:
+		sunset_sunrise_timer.start()
+		TimeCycle.is_daylight = false
 
 func _physics_process(_delta):
 	if TimeCycle.current_time == TimeCycle.TimeState.Night:

@@ -1,7 +1,6 @@
 extends TextureButton
 
 
-@export var troop_container: Node2D
 @export var troop_to_purchase: PackedScene
 @export var replace_loser := true
 
@@ -9,6 +8,8 @@ var purchase_price: int = 1
 
 
 func _on_pressed():
+	var troop_container = get_tree().get_first_node_in_group("TroopContainer")
+	
 	if GameStats.gold >= purchase_price:
 		if replace_loser: if get_tree().get_nodes_in_group("Loser").size() <= 0: return
 		

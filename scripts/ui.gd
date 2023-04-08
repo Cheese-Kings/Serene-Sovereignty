@@ -28,7 +28,7 @@ func _process(_delta):
 	$"%ShieldmanPrice".text = str(GameStats.current_shieldman_cost)
 
 func _on_settings_pressed():
-	pass
+	SaveSystem.save_game()
 
 func _on_upgrade_farm_pressed():
 	if GameStats.gold >= GameStats.farm_upgrade_cost:

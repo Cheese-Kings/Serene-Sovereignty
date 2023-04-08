@@ -1,9 +1,5 @@
-res://scenes/day_night_cycle.tscn
-res://assets/anim_libraries/troops.tres
 res://scenes/game.tscn
-res://scripts/enemy_spawner.gd
-res://scripts/custom_nodes/enemy_spawner.gd
-res://scripts/autoload/time_cycle.gd
-res://scripts/day_night_cycle.gd
-res://scripts/autoload/game_stats.gd
-res://scripts/troops/shieldman.gd
+res://assets/anim_libraries/troops.tres
+res://scripts/game.gd
+res://scenes/day_night_cycle.tscn
+res://scripts/autoload/save_system.gd

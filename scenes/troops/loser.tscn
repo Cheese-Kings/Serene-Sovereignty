@@ -78,3 +78,4 @@ radius = 5.0
 actor_node_path = NodePath("..")
 
 [connection signal="animation_finished" from="Sprite/TroopAnimations" to="TroopStateHandler" method="_on_troop_animation_finished"]
+[connection signal="animation_finished" from="Sprite/TroopAnimations" to="Sprite/TroopAnimations" method="_on_animation_finished"]

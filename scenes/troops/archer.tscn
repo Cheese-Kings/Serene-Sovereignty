@@ -59,6 +59,7 @@ width = 1.0
 default_color = Color(0, 0.917647, 1, 0.368627)
 
 [node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 y_sort_enabled = true
 position = Vector2(0, -1)
 texture = ExtResource("2_pxtfy")
@@ -88,3 +89,4 @@ actor_node_path = NodePath("..")
 blackboard = NodePath("../Blackboard")
 
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="TroopStateHandler" method="_on_troop_animation_finished"]
+[connection signal="animation_finished" from="Sprite/AnimationPlayer" to="Sprite/AnimationPlayer" method="_on_animation_finished"]

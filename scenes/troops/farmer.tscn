@@ -77,3 +77,4 @@ script = ExtResource("6_2h7lc")
 actor_node_path = NodePath("..")
 
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="TroopStateHandler" method="_on_troop_animation_finished"]
+[connection signal="animation_finished" from="Sprite/AnimationPlayer" to="Sprite/AnimationPlayer" method="_on_animation_finished"]
