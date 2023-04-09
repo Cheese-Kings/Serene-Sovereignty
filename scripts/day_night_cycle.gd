@@ -8,8 +8,6 @@ extends Node2D
 
 
 func _ready():
-	animation_player.play("Sunset")
-	
 	if TimeCycle.current_time == TimeCycle.TimeState.Day:
 		day_night_timer.start()
 		TimeCycle.is_daylight = true
@@ -34,6 +32,7 @@ func _on_day_night_timer_timeout():
 		TimeCycle.is_daylight = false
 		animation_player.play("Sunset")
 	elif TimeCycle.current_time == TimeCycle.TimeState.Night:
+		SaveSystem.save_game()
 		TimeCycle.current_time = TimeCycle.TimeState.Sunrise
 		TimeCycle.is_daylight = true
 		animation_player.play("Sunrise")

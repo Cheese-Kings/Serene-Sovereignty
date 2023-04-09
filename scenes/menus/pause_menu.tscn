@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://cswvv7e1eyxus"]
+
+[ext_resource type="FontFile" uid="uid://cwqhd35lj1ldk" path="res://assets/fonts/dogica/TTF/dogicabold.ttf" id="1_45p2m"]
+[ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_cw53y"]
+[ext_resource type="Texture2D" uid="uid://caml3may5e8de" path="res://godot_icon.svg" id="2_wcyeu"]
+[ext_resource type="PackedScene" uid="uid://bljbeavu5chvn" path="res://scenes/menus/settings_menu.tscn" id="4_sndpc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5n3d"]
+bg_color = Color(0.639216, 0.211765, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.521569, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i8ot5"]
+font = ExtResource("1_45p2m")
+font_size = 24
+
+[sub_resource type="InputEventKey" id="InputEventKey_eoony"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_63u4l"]
+events = [SubResource("InputEventKey_eoony")]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cw53y")
+
+[node name="MockupBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -90.0
+offset_right = 185.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t5n3d")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -63.0
+offset_right = 72.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_i8ot5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -58.0
+offset_right = 196.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_63u4l")
+texture_normal = ExtResource("2_wcyeu")
+stretch_mode = 5
+
+[node name="MockupText" type="Label" parent="MenuButtons/ResumeButton"]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 62.0
+offset_bottom = 114.0
+text = "Resume"
+
+[node name="SaveButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+texture_normal = ExtResource("2_wcyeu")
+stretch_mode = 5
+
+[node name="MockupText" type="Label" parent="MenuButtons/SaveButton"]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 62.0
+offset_bottom = 114.0
+text = "Save"
+
+[node name="SettingsButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+texture_normal = ExtResource("2_wcyeu")
+stretch_mode = 5
+
+[node name="MockupText" type="Label" parent="MenuButtons/SettingsButton"]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 62.0
+offset_bottom = 114.0
+text = "Settings"
+
+[node name="ExitToMenuButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+texture_normal = ExtResource("2_wcyeu")
+stretch_mode = 5
+
+[node name="MockupText" type="Label" parent="MenuButtons/ExitToMenuButton"]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 98.0
+offset_bottom = 114.0
+text = "Exit to menu"
+
+[node name="MockupText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 89.5
+offset_top = -93.0
+offset_right = 182.5
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "(Mockup UI)"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("4_sndpc")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MenuButtons/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MenuButtons/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MenuButtons/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]

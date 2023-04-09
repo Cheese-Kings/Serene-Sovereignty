@@ -1,11 +1,13 @@
 res://scripts/autoload
-res://scripts/ai/actions/troop_specific
+res://scripts/ui
 res://scripts
+res://scripts/custom_nodes
+res://scripts/menus
+res://scripts/ai/actions/troop_specific
 res://scripts/troops
 res://scripts/projectiles
 res://scripts/blackboards
 res://assets/anim_libraries
-res://scripts/ui
 res://assets/sprites/ui
 res://
 C:/Users/hclark7/OneDrive - Brisbane Catholic Education/Documents/Github/ClickerGameJamGameThing/.export/windows_jam

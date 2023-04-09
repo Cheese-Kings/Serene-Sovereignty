@@ -1,0 +1,154 @@
+[gd_scene load_steps=10 format=3 uid="uid://bljbeavu5chvn"]
+
+[ext_resource type="FontFile" uid="uid://cwqhd35lj1ldk" path="res://assets/fonts/dogica/TTF/dogicabold.ttf" id="1_5awlp"]
+[ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_cd5ta"]
+[ext_resource type="FontFile" uid="uid://cqnbm45upx3g5" path="res://assets/fonts/digital_disco/DigitalDisco.ttf" id="2_orcx4"]
+[ext_resource type="FontFile" uid="uid://bgmrs2blo34xn" path="res://assets/fonts/silkscreen/slkscr.ttf" id="3_6uqgs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tjq3"]
+bg_color = Color(0.709804, 0.235294, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.478431, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ruwn4"]
+font = ExtResource("1_5awlp")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hsks"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 19
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fwlip"]
+font = ExtResource("2_orcx4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57dq4"]
+
+[node name="SettingsMenu" type="Control" groups=["SettingsMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cd5ta")
+
+[node name="MockupBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tjq3")
+
+[node name="MockupText" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 72.0
+offset_right = 581.0
+offset_bottom = 98.0
+text = "(Mockup UI)"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -107.5
+offset_right = 80.0
+offset_bottom = -84.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_ruwn4")
+
+[node name="Settings" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -72.0
+offset_right = 187.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SfxVolume" type="HSplitContainer" parent="Settings"]
+layout_mode = 2
+split_offset = 60
+dragger_visibility = 1
+
+[node name="SettingText" type="Label" parent="Settings/SfxVolume"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hsks")
+text = "Sfx Volume"
+label_settings = SubResource("LabelSettings_fwlip")
+
+[node name="SfxVolumeSlider" type="HSlider" parent="Settings/SfxVolume"]
+layout_mode = 2
+max_value = 200.0
+step = 10.0
+value = 100.0
+
+[node name="MusicVolume" type="HSplitContainer" parent="Settings"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="SettingText" type="Label" parent="Settings/MusicVolume"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_fwlip")
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Settings/MusicVolume"]
+layout_mode = 2
+max_value = 200.0
+step = 20.0
+value = 100.0
+
+[node name="Clouds" type="HSplitContainer" parent="Settings"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="SettingText" type="Label" parent="Settings/Clouds"]
+layout_mode = 2
+text = "Clouds Enabled"
+label_settings = SubResource("LabelSettings_fwlip")
+
+[node name="CloudEnableBox" type="CheckBox" parent="Settings/Clouds"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_57dq4")
+button_pressed = true
+
+[node name="ApplySettings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = 87.0
+offset_right = 192.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_6uqgs")
+theme_override_font_sizes/font_size = 16
+text = "Apply"
+
+[connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]

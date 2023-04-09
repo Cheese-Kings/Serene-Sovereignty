@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=69 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tycli"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ebufxe5454dd" path="res://assets/sprites/ui/moontosun.png" id="10_3cmgv"]
 [ext_resource type="Texture2D" uid="uid://c1i5t6qilw6xw" path="res://assets/sprites/forest.png" id="10_g1jma"]
 [ext_resource type="Texture2D" uid="uid://by68tqm7dhax4" path="res://assets/sprites/ui/upgradecrops.png" id="10_gv0kl"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/cloud_spawner.gd" id="13_lujry"]
 [ext_resource type="Texture2D" uid="uid://bsac0i8t6xlny" path="res://assets/sprites/ui/neutralunitbutton.png" id="17_eksvu"]
 [ext_resource type="Script" path="res://scripts/ui/unit_purchase_button.gd" id="18_22yke"]
 [ext_resource type="Texture2D" uid="uid://b1vy2ckhijpvi" path="res://assets/sprites/ui/soldierbutton.png" id="19_6diqq"]
@@ -34,6 +35,8 @@
 [ext_resource type="PackedScene" uid="uid://kph3qwuhnkt" path="res://scenes/troops/shieldman.tscn" id="28_kq3j7"]
 [ext_resource type="Texture2D" uid="uid://baamd4roobuoc" path="res://assets/sprites/ui/shieldmenbutton.png" id="28_lrui6"]
 [ext_resource type="FontFile" uid="uid://dk87uv2vqoope" path="res://assets/fonts/dogica/OTF/dogicabold.otf" id="34_enp55"]
+[ext_resource type="Script" path="res://scripts/ui/the_moon.gd" id="35_23c4p"]
+[ext_resource type="PackedScene" uid="uid://cswvv7e1eyxus" path="res://scenes/menus/pause_menu.tscn" id="35_e0dh8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
 vertices = PackedVector2Array(55, 143, 190, 147, 208, 187, -184, 187, -56, 147, -150, 130, -187, 130, -186, 88, -142, 121, -289, 177, -365, 179, -370, -199, -260, 89, 368, -200, -88, 120, 94, 117, 72, 126, 54, 129, -54, 130, -76, 129, 180, 80, -183, 150, 362, 177, 293, 180, 264, 116, 263, 80, 177, 116)
@@ -135,7 +138,7 @@ font = ExtResource("7_uf3kx")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku47w"]
 atlas = ExtResource("10_3cmgv")
-region = Rect2(0, 0, 27, 27)
+region = Rect2(81, 0, 27, 27)
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8den"]
 font = ExtResource("27_d15pn")
@@ -240,6 +243,15 @@ texture = ExtResource("8_gal5g")
 modulate = Color(1, 1, 1, 0.803922)
 position = Vector2(0, -161)
 texture = ExtResource("10_g1jma")
+
+[node name="CloudSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_timer")]
+position = Vector2(-472, 0)
+script = ExtResource("13_lujry")
+spawn_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="CloudSpawner"]
+wait_time = 10.0
+autostart = true
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -661,6 +673,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_ku47w")
 stretch_mode = 5
+script = ExtResource("35_23c4p")
 
 [node name="DayCounter" type="Label" parent="UILayer/UI/Time"]
 unique_name_in_owner = true
@@ -790,6 +803,10 @@ offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Return To Main Menu"
+
+[node name="PauseMenu" parent="UILayer/UI" instance=ExtResource("35_e0dh8")]
+visible = false
+layout_mode = 1
 
 [connection signal="area_entered" from="GameArena/TownHall" to="." method="_on_town_hall_area_entered"]
 [connection signal="area_exited" from="GameArena/TownHall" to="." method="_on_town_hall_area_exited"]

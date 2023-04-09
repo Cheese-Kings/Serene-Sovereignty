@@ -11,5 +11,5 @@ enum TimeState {
 }
 
 
-var current_time := TimeState.Sunset
-var is_daylight = false
+var current_time := TimeState.Day
+var is_daylight = true
