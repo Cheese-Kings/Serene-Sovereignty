@@ -5,6 +5,7 @@ extends "res://scripts/projectiles/projectile.gd"
 
 @onready var sprite = $Sprite
 @onready var collider = $Collider
+@onready var land_sound = $LandSound
 
 
 func _process(_delta):
@@ -15,3 +16,7 @@ func _reached_target():
 	rotation = 90
 	collider.set_deferred("disabled", true)
 	sprite.set_texture(landed_texture)
+
+func _hit_troop():
+	pass
+	#land_sound.play_sfx()

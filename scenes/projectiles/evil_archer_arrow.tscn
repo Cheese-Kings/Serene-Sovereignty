@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vfky5ho0nkbg"]
+[gd_scene load_steps=7 format=3 uid="uid://vfky5ho0nkbg"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/archer_arrow.gd" id="1_lc0s5"]
 [ext_resource type="Texture2D" uid="uid://dw3re6a0bs6k5" path="res://assets/sprites/projectiles/noheadredarrow.png" id="2_dd17m"]
 [ext_resource type="Texture2D" uid="uid://dyks07ax4aje1" path="res://assets/sprites/projectiles/redarrows.png" id="2_ow2so"]
+[ext_resource type="AudioStream" uid="uid://b6t0cnklotww" path="res://assets/sfx/metallic-light-impact-43677.mp3" id="4_y82iy"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/sound_effect.gd" id="5_o3b5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_com5q"]
 size = Vector2(10, 2)
@@ -23,5 +25,11 @@ debug_color = Color(0.87451, 0, 0.913725, 0.419608)
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("2_ow2so")
+
+[node name="LandSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_y82iy")
+volume_db = 10.0
+bus = &"Sfx"
+script = ExtResource("5_o3b5w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

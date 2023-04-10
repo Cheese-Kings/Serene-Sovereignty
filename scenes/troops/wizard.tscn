@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bir6ecy8c2vcm"]
+[gd_scene load_steps=15 format=3 uid="uid://bir6ecy8c2vcm"]
 
 [ext_resource type="Script" path="res://scripts/troops/archer.gd" id="1_ffkft"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_858i8"]
+[ext_resource type="AudioStream" uid="uid://c06uaqb4q58ec" path="res://assets/sfx/fire-magic-6947.mp3" id="3_0cmyj"]
 [ext_resource type="Texture2D" uid="uid://bk0g7afok7ebr" path="res://assets/sprites/troops/wizzard.png" id="3_iq1xl"]
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="4_daw12"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/sound_effect.gd" id="4_r2yfr"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_2jobf"]
 [ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_qewkk"]
 [ext_resource type="Script" path="res://scripts/blackboards/ranged_attack_troop.gd" id="7_8vagh"]
@@ -36,6 +38,14 @@ troop_animator = NodePath("../Sprite/AnimationPlayer")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ynbj7")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="ShootBall" type="AudioStreamPlayer2D" parent="Sfx"]
+stream = ExtResource("3_0cmyj")
+volume_db = -5.0
+bus = &"Sfx"
+script = ExtResource("4_r2yfr")
 
 [node name="TownHallDetection" type="Area2D" parent="."]
 collision_layer = 128
@@ -82,6 +92,9 @@ projectile = ExtResource("8_2lnoy")
 troop_group = "Wizard"
 target_troop_group = "EnemyTroop"
 ranged_attack_position_y = -5.0
+sfx_list = {
+"attack": NodePath("../Sfx/ShootBall")
+}
 
 [node name="RangedAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("9_7dbjx")]
 actor_node_path = NodePath("..")

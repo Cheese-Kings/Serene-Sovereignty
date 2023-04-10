@@ -1,13 +1,17 @@
-[gd_scene load_steps=69 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=83 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tycli"]
 [ext_resource type="Texture2D" uid="uid://bhcdl7n54j5n7" path="res://assets/sprites/grassfield.png" id="2_kpsyd"]
 [ext_resource type="Texture2D" uid="uid://d4hrl27gpfq2u" path="res://assets/sprites/ui/townhallshadow.png" id="3_aksag"]
+[ext_resource type="Script" path="res://scripts/game_music.gd" id="3_u6e3s"]
+[ext_resource type="AudioStream" uid="uid://dp8jnmm30bt11" path="res://assets/music/ambient-classical-guitar-144998.mp3" id="3_v7rxq"]
 [ext_resource type="PackedScene" uid="uid://1awynisxpbmu" path="res://scenes/troops/loser.tscn" id="3_wrk6b"]
 [ext_resource type="PackedScene" uid="uid://bgojqyy8rbv2g" path="res://scenes/troops/swordsman.tscn" id="4_sf3di"]
 [ext_resource type="Texture2D" uid="uid://ds43sq3qstsx2" path="res://assets/sprites/farmerhuttopshadow.png" id="5_4oppb"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="5_fj5ii"]
+[ext_resource type="AudioStream" uid="uid://j8ufq60gc0qi" path="res://assets/music/heartbeat-10780.mp3" id="5_ly5hj"]
+[ext_resource type="AudioStream" uid="uid://cghdt8wooaalt" path="res://assets/music/medieval-horn-by-kris-klavenes-wav-77565.mp3" id="6_2ohud"]
 [ext_resource type="Texture2D" uid="uid://cxuvs5dsat2q5" path="res://assets/sprites/farmercrops.png" id="6_82cfq"]
 [ext_resource type="Texture2D" uid="uid://dtv6rpfwiru4p" path="res://assets/sprites/ui/toolbar3.png" id="6_a6k4p"]
 [ext_resource type="Texture2D" uid="uid://ch1a8nl25vp7q" path="res://assets/sprites/ui/Townhall.png" id="6_cvluj"]
@@ -37,11 +41,75 @@
 [ext_resource type="FontFile" uid="uid://dk87uv2vqoope" path="res://assets/fonts/dogica/OTF/dogicabold.otf" id="34_enp55"]
 [ext_resource type="Script" path="res://scripts/ui/the_moon.gd" id="35_23c4p"]
 [ext_resource type="PackedScene" uid="uid://cswvv7e1eyxus" path="res://scenes/menus/pause_menu.tscn" id="35_e0dh8"]
+[ext_resource type="FontFile" uid="uid://n8i37jplrix0" path="res://assets/fonts/silkscreen/slkscrb.ttf" id="36_t40lm"]
+[ext_resource type="PackedScene" uid="uid://det32cffp1351" path="res://scenes/menus/debug_menu.tscn" id="38_yum8s"]
+
+[sub_resource type="Animation" id="Animation_ef4nr"]
+resource_name = "DayTransition"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music/DayMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-80, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+
+[sub_resource type="Animation" id="Animation_n2rj3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music/DayMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music/NightMusic:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jppi8"]
+resource_name = "NightTransition"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music/NightMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-80, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2m27q"]
+_data = {
+"DayTransition": SubResource("Animation_ef4nr"),
+"NightTransition": SubResource("Animation_jppi8"),
+"RESET": SubResource("Animation_n2rj3")
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_566c8"]
-vertices = PackedVector2Array(55, 143, 190, 147, 208, 187, -184, 187, -56, 147, -150, 130, -187, 130, -186, 88, -142, 121, -289, 177, -365, 179, -370, -199, -260, 89, 368, -200, -88, 120, 94, 117, 72, 126, 54, 129, -54, 130, -76, 129, 180, 80, -183, 150, 362, 177, 293, 180, 264, 116, 263, 80, 177, 116)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 11, 13, 7), PackedInt32Array(8, 7, 13, 14), PackedInt32Array(15, 16, 17, 18, 19, 14, 13, 20), PackedInt32Array(3, 21, 4), PackedInt32Array(0, 4, 18, 17), PackedInt32Array(13, 22, 23, 24, 25), PackedInt32Array(20, 26, 15), PackedInt32Array(20, 13, 25)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-365, 179, -370, -199, 368, -200, 362, 177, 293, 180, 264, 116, 263, 80, 180, 80, 177, 116, 94, 117, 72, 126, 54, 129, 55, 143, 190, 147, 208, 187, -184, 187, -183, 150, -56, 147, -54, 130, -76, 129, -88, 120, -142, 121, -150, 130, -187, 130, -186, 88, -260, 89, -289, 177)])
+vertices = PackedVector2Array(55, 143, 190, 147, 208, 187, -184, 187, -56, 147, -260, 117, -285, 174, -365, 179, -370, -199, -255, 89, 368, -200, -205, 86, -142, 121, -189, 97, -88, 120, -150, 130, -187, 131, 72, 126, 54, 129, -54, 130, -76, 129, 94, 117, 362, 177, 287, 179, 264, 116, 258, 97, 245, 83, 186, 95, 172, 125, 155, 118, -183, 150, 207, 83)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11), PackedInt32Array(12, 13, 11, 10, 14), PackedInt32Array(15, 16, 13, 12), PackedInt32Array(17, 18, 19, 20, 14, 10, 21), PackedInt32Array(10, 22, 23, 24, 25), PackedInt32Array(10, 25, 26), PackedInt32Array(27, 28, 29), PackedInt32Array(3, 30, 4), PackedInt32Array(0, 4, 19, 18), PackedInt32Array(29, 21, 10, 27), PackedInt32Array(31, 27, 10), PackedInt32Array(31, 10, 26)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-365, 179, -370, -199, 368, -200, 362, 177, 287, 179, 264, 116, 258, 97, 245, 83, 207, 83, 186, 95, 172, 125, 155, 118, 94, 117, 72, 126, 54, 129, 55, 143, 190, 147, 208, 187, -184, 187, -183, 150, -56, 147, -54, 130, -76, 129, -88, 120, -142, 121, -150, 130, -187, 131, -189, 97, -205, 86, -255, 89, -260, 117, -285, 174)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quu5w"]
 size = Vector2(867, 172)
@@ -144,6 +212,110 @@ region = Rect2(81, 0, 27, 27)
 font = ExtResource("27_d15pn")
 shadow_size = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_2dsgi"]
+font = ExtResource("36_t40lm")
+
+[sub_resource type="Animation" id="Animation_4ykd2"]
+resource_name = "Saved"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3, 4)
+}
+
+[sub_resource type="Animation" id="Animation_labev"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ib38s"]
+_data = {
+"RESET": SubResource("Animation_labev"),
+"Saved": SubResource("Animation_4ykd2")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4akak"]
 bg_color = Color(0, 0, 0, 0.305882)
 
@@ -167,6 +339,34 @@ script = ExtResource("1_tycli")
 [node name="DayNightCycle" parent="." instance=ExtResource("1_av7on")]
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[node name="Music" type="Node2D" parent="."]
+script = ExtResource("3_u6e3s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Music"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2m27q")
+}
+
+[node name="AlarmTimer" type="Timer" parent="Music"]
+wait_time = 15.0
+one_shot = true
+
+[node name="DayMusic" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_v7rxq")
+autoplay = true
+mix_target = 1
+bus = &"Music"
+
+[node name="NightMusic" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("5_ly5hj")
+autoplay = true
+bus = &"Music"
+
+[node name="Alarm" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_2ohud")
+bus = &"Sfx"
 
 [node name="UnitSpawnPos" type="Node2D" parent="."]
 position = Vector2(0, 56)
@@ -700,6 +900,25 @@ offset_right = 310.0
 offset_bottom = 307.0
 toggle_mode = true
 
+[node name="SaveIndicator" type="Label" parent="UILayer/UI" groups=["SaveIndicator"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -18.0
+offset_right = 147.0
+offset_bottom = 8.0
+grow_vertical = 0
+text = "Game Saved!"
+label_settings = SubResource("LabelSettings_2dsgi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UILayer/UI/SaveIndicator"]
+libraries = {
+"": SubResource("AnimationLibrary_ib38s")
+}
+
 [node name="LoseScreen" type="Panel" parent="UILayer/UI" groups=["LoseScreen"]]
 visible = false
 layout_mode = 1
@@ -808,6 +1027,14 @@ text = "Return To Main Menu"
 visible = false
 layout_mode = 1
 
+[node name="DebugMenu" parent="UILayer/UI" instance=ExtResource("38_yum8s")]
+visible = false
+layout_mode = 1
+
+[connection signal="time_changed" from="DayNightCycle" to="Music" method="_on_day_night_cycle_time_changed"]
+[connection signal="timeout" from="Music/AlarmTimer" to="Music" method="_on_alarm_timer_timeout"]
+[connection signal="finished" from="Music/DayMusic" to="Music" method="_on_day_music_finished"]
+[connection signal="finished" from="Music/NightMusic" to="Music" method="_on_night_music_finished"]
 [connection signal="area_entered" from="GameArena/TownHall" to="." method="_on_town_hall_area_entered"]
 [connection signal="area_exited" from="GameArena/TownHall" to="." method="_on_town_hall_area_exited"]
 [connection signal="pressed" from="UILayer/UI/Settings" to="UILayer/UI" method="_on_settings_pressed"]

@@ -28,10 +28,24 @@ func save_game():
 	var settings_file = FileAccess.open("user://settings.data", FileAccess.WRITE)
 	settings_file.store_line(str(SettingValues.sfx_volume))
 	settings_file.store_line(str(SettingValues.music_volume))
-	settings_file.store_line(str(SettingValues.enable_clouds))
+	settings_file.store_line(str(float(SettingValues.enable_clouds)))
 	settings_file.flush()
+	
+	var save_indicator = get_tree().get_first_node_in_group("SaveIndicator")
+	if save_indicator != null:
+		save_indicator.get_node("AnimationPlayer").stop()
+		save_indicator.get_node("AnimationPlayer").play("Saved")
 
 func load_game():
+	if FileAccess.file_exists("user://save_data/troops.tscn"):
+		var saved_container = load("user://save_data/troops.tscn")
+		
+		get_tree().get_first_node_in_group("TroopContainer").queue_free()
+		
+		var instanced_container = saved_container.instantiate()
+		
+		get_tree().get_first_node_in_group("ProjectileContainer").add_sibling(instanced_container)
+	
 	if FileAccess.file_exists("user://save_data/stats.data"):
 		var stat_file = FileAccess.open("user://save_data/stats.data", FileAccess.READ)
 		var split_lines = stat_file.get_as_text().split("\n")
@@ -50,18 +64,11 @@ func load_game():
 		
 		SettingValues.sfx_volume = split_lines[0].to_int()
 		SettingValues.music_volume = split_lines[1].to_int()
-		SettingValues.enable_clouds = float(split_lines[2])
+		SettingValues.enable_clouds = bool(float(split_lines[2]))
+		
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), split_lines[0].to_int())
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), split_lines[1].to_int())
 		
 		get_tree().get_first_node_in_group("SettingsMenu").update_settings()
-		
-	
-	if FileAccess.file_exists("user://save_data/troops.tscn"):
-		var saved_container = load("user://save_data/troops.tscn")
-		
-		get_tree().get_first_node_in_group("TroopContainer").queue_free()
-		
-		var instanced_container = saved_container.instantiate()
-		
-		get_tree().get_first_node_in_group("ProjectileContainer").add_sibling(instanced_container)
 	
 	get_tree().get_first_node_in_group("Game").enable_losing = true

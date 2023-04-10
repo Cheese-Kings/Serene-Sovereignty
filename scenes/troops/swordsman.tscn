@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgojqyy8rbv2g"]
+[gd_scene load_steps=14 format=3 uid="uid://bgojqyy8rbv2g"]
 
 [ext_resource type="Script" path="res://scripts/troops/swordsman.gd" id="1_jtyms"]
 [ext_resource type="Texture2D" uid="uid://c0i42whkvme31" path="res://assets/sprites/troops/soldier.png" id="2_7q06d"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_ginl8"]
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="3_316mx"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/sound_effect.gd" id="3_j6j2c"]
+[ext_resource type="AudioStream" uid="uid://bn60xbcb6bbfp" path="res://assets/sfx/sword-hit-7160.mp3" id="3_vxghb"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_v0nho"]
 [ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_6culh"]
 [ext_resource type="Script" path="res://scripts/blackboards/attack_troop.gd" id="6_6y2uo"]
@@ -35,6 +37,14 @@ troop_animator = NodePath("../Sprite/AnimationPlayer")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ynbj7")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="Sfx"]
+stream = ExtResource("3_vxghb")
+volume_db = -10.0
+bus = &"Sfx"
+script = ExtResource("3_j6j2c")
 
 [node name="TownHallDetection" type="Area2D" parent="."]
 collision_layer = 128
@@ -81,10 +91,14 @@ script = ExtResource("6_6y2uo")
 troop_group = "Swordsman"
 target_troop_group = "EnemyTroop"
 ranged_attack_position_y = -80.0
+sfx_list = {
+"attack": NodePath("../Sfx/AttackSound")
+}
 
 [node name="MeleeAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("7_j0tdu")]
 actor_node_path = NodePath("..")
 blackboard = NodePath("../Blackboard")
 
+[connection signal="finished" from="Sfx/AttackSound" to="Sfx/AttackSound" method="_on_finished"]
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="TroopStateHandler" method="_on_troop_animation_finished"]
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="Sprite/AnimationPlayer" method="_on_animation_finished"]

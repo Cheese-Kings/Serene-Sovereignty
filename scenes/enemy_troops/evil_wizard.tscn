@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://5xneheiddmju"]
+[gd_scene load_steps=14 format=3 uid="uid://5xneheiddmju"]
 
 [ext_resource type="Script" path="res://scripts/troops/wizard.gd" id="1_xpigg"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_lqxvw"]
 [ext_resource type="Texture2D" uid="uid://d13hjkbpea2vq" path="res://assets/sprites/troops/redwizzard.png" id="3_p1f2c"]
+[ext_resource type="AudioStream" uid="uid://c06uaqb4q58ec" path="res://assets/sfx/fire-magic-6947.mp3" id="3_wfa2r"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/sound_effect.gd" id="4_g2nuq"]
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="4_vqdna"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_bcpvd"]
 [ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_pk16x"]
@@ -33,6 +35,14 @@ troop_animator = NodePath("../Sprite/AnimationPlayer")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ynbj7")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="ShootBall" type="AudioStreamPlayer2D" parent="Sfx"]
+stream = ExtResource("3_wfa2r")
+volume_db = -5.0
+bus = &"Sfx"
+script = ExtResource("4_g2nuq")
 
 [node name="PathLine" type="Line2D" parent="."]
 visible = false
@@ -70,6 +80,9 @@ script = ExtResource("7_pffhd")
 projectile = ExtResource("8_yqya8")
 troop_group = "EvilWizard"
 target_troop_group = "Troop"
+sfx_list = {
+"attack": NodePath("../Sfx/ShootBall")
+}
 
 [node name="EnemyRangedAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("11_54nwg")]
 actor_node_path = NodePath("..")

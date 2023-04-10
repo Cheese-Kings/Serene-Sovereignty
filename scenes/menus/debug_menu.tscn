@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://det32cffp1351"]
+
+[ext_resource type="Script" path="res://scripts/menus/debug_menu.gd" id="1_fvu4v"]
+
+[node name="DebugMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_fvu4v")
+
+[node name="DebugTexts" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FPS" type="Label" parent="DebugTexts"]
+layout_mode = 2
+text = "FPS: 69"
+
+[node name="MSF" type="Label" parent="DebugTexts"]
+layout_mode = 2
+text = "ms/f: 0.420"
+
+[node name="TroopCount" type="Label" parent="DebugTexts"]
+layout_mode = 2
+text = "Troop Count: 69"
+
+[node name="CloudCount" type="Label" parent="DebugTexts"]
+layout_mode = 2
+text = "Cloud Count: 69"

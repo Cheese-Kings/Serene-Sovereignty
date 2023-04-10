@@ -1,6 +1,6 @@
 extends Node
 
 
-var sfx_volume = 100
-var music_volume = 100
+var sfx_volume = 0
+var music_volume = 0
 var enable_clouds = true

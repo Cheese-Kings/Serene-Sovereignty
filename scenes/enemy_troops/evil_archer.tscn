@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3m18p3rs5j4p"]
+[gd_scene load_steps=18 format=3 uid="uid://b3m18p3rs5j4p"]
 
 [ext_resource type="Script" path="res://scripts/troops/archer.gd" id="1_b56t2"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_67syl"]
 [ext_resource type="Texture2D" uid="uid://cgbh1wle018oy" path="res://assets/sprites/troops/redarchers.png" id="3_qjhxw"]
+[ext_resource type="AudioStream" uid="uid://bxpyd733vsrtu" path="res://assets/sfx/bow-release-bow-and-arrow-4-101936.mp3" id="3_sw37x"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/sound_effect.gd" id="4_0udgh"]
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="4_8ck3x"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_kbxjl"]
 [ext_resource type="Script" path="res://scripts/troop_nav_agent.gd" id="6_l6qsj"]
@@ -51,6 +53,13 @@ troop_animator = NodePath("../Sprite/AnimationPlayer")
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ynbj7")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="ArrowRelease" type="AudioStreamPlayer2D" parent="Sfx"]
+stream = ExtResource("3_sw37x")
+bus = &"Sfx"
+script = ExtResource("4_0udgh")
 
 [node name="PathLine" type="Line2D" parent="."]
 visible = false

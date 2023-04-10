@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ssx62iqs6ncw"]
+[gd_scene load_steps=12 format=3 uid="uid://ssx62iqs6ncw"]
 
 [ext_resource type="Script" path="res://scripts/troops/swordsman.gd" id="1_f075y"]
 [ext_resource type="Script" path="res://scripts/custom_nodes/troop_state_handler.gd" id="2_cnpmi"]
+[ext_resource type="AudioStream" uid="uid://bn60xbcb6bbfp" path="res://assets/sfx/sword-hit-7160.mp3" id="3_2r8et"]
 [ext_resource type="Texture2D" uid="uid://b5i08qponj6n6" path="res://assets/sprites/troops/redsoldier.png" id="3_jj4ck"]
+[ext_resource type="Script" path="res://scripts/custom_nodes/sound_effect.gd" id="4_01o0c"]
 [ext_resource type="AnimationLibrary" uid="uid://b06f1ywhwju3y" path="res://assets/anim_libraries/troops.tres" id="4_jdf0c"]
 [ext_resource type="Script" path="res://scripts/troop_animator.gd" id="5_e8ahf"]
 [ext_resource type="Script" path="res://scripts/blackboards/attack_troop.gd" id="6_3a8gs"]
@@ -32,6 +34,14 @@ troop_animator = NodePath("../Sprite/AnimationPlayer")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ynbj7")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="Sfx"]
+stream = ExtResource("3_2r8et")
+volume_db = -10.0
+bus = &"Sfx"
+script = ExtResource("4_01o0c")
 
 [node name="PathLine" type="Line2D" parent="."]
 visible = false
@@ -68,10 +78,14 @@ avoidance_enabled = true
 script = ExtResource("6_3a8gs")
 troop_group = "EvilSwordsman"
 target_troop_group = "Troop"
+sfx_list = {
+"attack": NodePath("../Sfx/AttackSound")
+}
 
 [node name="EnemyMeleeAI" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("7_avh0r")]
 actor_node_path = NodePath("..")
 blackboard = NodePath("../Blackboard")
 
+[connection signal="finished" from="Sfx/AttackSound" to="Sfx/AttackSound" method="_on_finished"]
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="TroopStateHandler" method="_on_troop_animation_finished"]
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="Sprite/AnimationPlayer" method="_on_animation_finished"]

@@ -33,7 +33,7 @@ script = ExtResource("4_u6ngf")
 
 [node name="GoFarmSomewhere" type="Node" parent="SelectorComposite/FarmDuringDay"]
 script = ExtResource("6_aeg5n")
-move_range = Vector2(300, 120)
+move_range = Vector2(300, 80)
 
 [node name="DropEarningsAtFarmHouse" type="Node" parent="SelectorComposite/FarmDuringDay"]
 script = ExtResource("7_68sdt")

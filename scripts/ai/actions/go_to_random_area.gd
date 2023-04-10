@@ -18,7 +18,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		return SUCCESS
 	
 	if not actor.navigating:
-		actor.navigate_to(Vector2(randi_range(-move_range.x, move_range.x), randi_range(-move_range.y, move_range.y)))
+		actor.navigate_to(Vector2(randi_range(-move_range.x, move_range.x), randi_range(-move_range.y + 20, move_range.y)))
 	
 	return FAILURE
 

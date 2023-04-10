@@ -21,7 +21,11 @@ func _physics_process(delta):
 func _reached_target():
 	queue_free()
 
+func _hit_troop():
+	pass
+
 func _on_body_entered(body):
 	if body.is_in_group(target_type):
 		body.stats.health -= attack_power
+		_hit_troop()
 		queue_free()

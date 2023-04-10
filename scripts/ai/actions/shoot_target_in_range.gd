@@ -28,6 +28,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			actor.state_machine.set_state(TroopStateMachine.State.ATTACKING)
 			start_cooldown(actor)
 			
+			if blackboard.sfx_list.has("attack"):
+				blackboard.get_node(str(blackboard.sfx_list.attack)).play_sfx()
+			
 			return SUCCESS
 	return FAILURE
 
