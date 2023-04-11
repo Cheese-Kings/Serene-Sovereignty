@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=84 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tycli"]
@@ -43,6 +43,8 @@
 [ext_resource type="PackedScene" uid="uid://cswvv7e1eyxus" path="res://scenes/menus/pause_menu.tscn" id="35_e0dh8"]
 [ext_resource type="FontFile" uid="uid://n8i37jplrix0" path="res://assets/fonts/silkscreen/slkscrb.ttf" id="36_t40lm"]
 [ext_resource type="PackedScene" uid="uid://det32cffp1351" path="res://scenes/menus/debug_menu.tscn" id="38_yum8s"]
+[ext_resource type="Texture2D" uid="uid://d2m7lxvq7dc58" path="res://assets/sprites/ui/death_screen/deathscreen.png" id="41_37avb"]
+[ext_resource type="Texture2D" uid="uid://ckyipumvld6fk" path="res://assets/sprites/ui/death_screen/returntomainmenubutton.png" id="43_fride"]
 
 [sub_resource type="Animation" id="Animation_ef4nr"]
 resource_name = "DayTransition"
@@ -51,6 +53,21 @@ tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Music/DayMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-80, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+
+[sub_resource type="Animation" id="Animation_jppi8"]
+resource_name = "NightTransition"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music/NightMusic:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,21 +99,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_jppi8"]
-resource_name = "NightTransition"
-length = 1.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music/NightMusic:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-80, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2m27q"]
@@ -215,6 +217,53 @@ shadow_size = 0
 [sub_resource type="LabelSettings" id="LabelSettings_2dsgi"]
 font = ExtResource("36_t40lm")
 
+[sub_resource type="Animation" id="Animation_labev"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_4ykd2"]
 resource_name = "Saved"
 length = 4.0
@@ -263,53 +312,6 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1, 3, 4)
 }
 
-[sub_resource type="Animation" id="Animation_labev"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ib38s"]
 _data = {
 "RESET": SubResource("Animation_labev"),
@@ -317,18 +319,11 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4akak"]
-bg_color = Color(0, 0, 0, 0.305882)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smd21"]
-bg_color = Color(0.258824, 0.0941176, 0, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.6, 0.25098, 0, 1)
+bg_color = Color(0, 0, 0, 0.494118)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kep2u"]
 font = ExtResource("34_enp55")
+shadow_color = Color(0, 0, 0, 0.670588)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rwdop"]
 font = ExtResource("7_uf3kx")
@@ -445,7 +440,7 @@ position = Vector2(0, -161)
 texture = ExtResource("10_g1jma")
 
 [node name="CloudSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_timer")]
-position = Vector2(-472, 0)
+position = Vector2(-512, 0)
 script = ExtResource("13_lujry")
 spawn_timer = NodePath("Timer")
 
@@ -929,99 +924,87 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4akak")
 
-[node name="MockupBackground" type="Panel" parent="UILayer/UI/LoseScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -125.0
-offset_right = 200.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_smd21")
+[node name="Background" type="TextureRect" parent="UILayer/UI/LoseScreen"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("41_37avb")
 
-[node name="MockupTitle" type="Label" parent="UILayer/UI/LoseScreen"]
+[node name="Title" type="Label" parent="UILayer/UI/LoseScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -114.5
-offset_right = 176.0
-offset_bottom = -91.5
+offset_left = -184.0
+offset_top = -49.0
+offset_right = 184.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Your kingdom has fallen"
+text = "Your kingdom
+has fallen"
 label_settings = SubResource("LabelSettings_kep2u")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MockupDays" type="Label" parent="UILayer/UI/LoseScreen"]
+[node name="DaysSurvived" type="Label" parent="UILayer/UI/LoseScreen"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -189.5
-offset_top = -81.5
-offset_right = -60.5
-offset_bottom = -58.5
+offset_top = 6.5
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Days survived: 69"
 label_settings = SubResource("LabelSettings_rwdop")
+horizontal_alignment = 1
 
-[node name="MockupEnemiesDefeat" type="Label" parent="UILayer/UI/LoseScreen"]
+[node name="EnemiesDefeated" type="Label" parent="UILayer/UI/LoseScreen"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -190.5
-offset_top = -58.5
-offset_right = -27.5
-offset_bottom = -35.5
+offset_top = 24.5
+offset_bottom = 43.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Enemies Defeated: 420"
 label_settings = SubResource("LabelSettings_rwdop")
+horizontal_alignment = 1
 
-[node name="MockupTotalGoldEarned" type="Label" parent="UILayer/UI/LoseScreen"]
+[node name="TotalGoldEarned" type="Label" parent="UILayer/UI/LoseScreen"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -189.5
-offset_top = -34.5
-offset_right = -12.5
-offset_bottom = -11.5
+offset_top = 42.5
+offset_bottom = 61.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Total Gold Earned: 69420"
 label_settings = SubResource("LabelSettings_rwdop")
+horizontal_alignment = 1
 
-[node name="MockupReturnToMenuButton" type="Button" parent="UILayer/UI/LoseScreen"]
+[node name="ReturnToMenuButton" type="TextureButton" parent="UILayer/UI/LoseScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = 78.5
-offset_right = 88.0
-offset_bottom = 109.5
+offset_left = -87.0
+offset_top = 71.0
+offset_right = 89.0
+offset_bottom = 163.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Return To Main Menu"
+texture_normal = ExtResource("43_fride")
 
 [node name="PauseMenu" parent="UILayer/UI" instance=ExtResource("35_e0dh8")]
 visible = false
@@ -1046,3 +1029,4 @@ layout_mode = 1
 [connection signal="pressed" from="UILayer/UI/BuyWizard/WizardBuyButton" to="UILayer/UI/BuyWizard/WizardBuyButton" method="_on_pressed"]
 [connection signal="pressed" from="UILayer/UI/BuyShieldman/ShieldmanBuyButton" to="UILayer/UI/BuyShieldman/ShieldmanBuyButton" method="_on_pressed"]
 [connection signal="pressed" from="UILayer/UI/FarmHouseButton" to="UILayer/UI" method="_on_farm_house_button_pressed"]
+[connection signal="pressed" from="UILayer/UI/LoseScreen/ReturnToMenuButton" to="." method="_on_return_to_menu_after_lose_button_pressed"]

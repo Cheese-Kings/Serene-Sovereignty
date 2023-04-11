@@ -1,4 +1,137 @@
-[gd_scene format=3 uid="uid://wkvwdck3u5ap"]
+[gd_scene load_steps=34 format=3 uid="uid://wkvwdck3u5ap"]
+
+[ext_resource type="Texture2D" uid="uid://ceiht4oyxrks5" path="res://assets/sprites/ui/main_menu/background.png" id="1_2q458"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_jyoq8"]
+[ext_resource type="Texture2D" uid="uid://j8qo4lhbasx0" path="res://assets/sprites/ui/main_menu/gamelogo2.png" id="2_wc7a8"]
+[ext_resource type="Texture2D" uid="uid://blepitahagtbh" path="res://assets/sprites/ui/main_menu/Continue_button.png" id="3_pamu1"]
+[ext_resource type="FontFile" uid="uid://cqnbm45upx3g5" path="res://assets/fonts/digital_disco/DigitalDisco.ttf" id="4_0ivjs"]
+[ext_resource type="Texture2D" uid="uid://cdm17tkvfx8t1" path="res://assets/sprites/ui/main_menu/Newgamebutton.png" id="4_ensbd"]
+[ext_resource type="Texture2D" uid="uid://dnp725wi3pgto" path="res://assets/sprites/ui/main_menu/settingsbutton.png" id="5_x8twl"]
+[ext_resource type="Texture2D" uid="uid://dxk78x4uwfemo" path="res://assets/sprites/ui/main_menu/quitbutton.png" id="6_ops67"]
+[ext_resource type="PackedScene" uid="uid://bljbeavu5chvn" path="res://scenes/menus/settings_menu.tscn" id="9_7awlx"]
+
+[sub_resource type="Animation" id="Animation_xgcd7"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(384, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(192, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_645gr"]
+resource_name = "menu_start"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(384, -0.25, 0, 0.25, 0, 384, -0.25, 0, 0.25, 0, 384, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(192, -0.25, 0, 0.25, 0, 192, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f5c1"]
+_data = {
+"RESET": SubResource("Animation_xgcd7"),
+"menu_start": SubResource("Animation_645gr")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4f6y"]
+atlas = ExtResource("3_pamu1")
+region = Rect2(1, 0, 315, 220)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_12gqb"]
+texture = SubResource("AtlasTexture_q4f6y")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yav4t"]
+atlas = ExtResource("3_pamu1")
+region = Rect2(317, -1, 315, 221)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lj7hb"]
+texture = SubResource("AtlasTexture_yav4t")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emyju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cp2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxjf8"]
+atlas = ExtResource("4_ensbd")
+region = Rect2(0, 0, 334, 209)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iiq8o"]
+texture = SubResource("AtlasTexture_nxjf8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nki0g"]
+atlas = ExtResource("4_ensbd")
+region = Rect2(334, 0, 334, 210)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rxcc"]
+texture = SubResource("AtlasTexture_nki0g")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ccram"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xjh3"]
+atlas = ExtResource("5_x8twl")
+region = Rect2(0, 0, 287, 108)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xt5t6"]
+texture = SubResource("AtlasTexture_4xjh3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b00of"]
+atlas = ExtResource("5_x8twl")
+region = Rect2(287, 0, 287, 108)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wig3p"]
+texture = SubResource("AtlasTexture_b00of")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vye22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma8k6"]
+atlas = ExtResource("6_ops67")
+region = Rect2(0, 0, 213, 87)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knhw8"]
+texture = SubResource("AtlasTexture_ma8k6")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30j42"]
+atlas = ExtResource("6_ops67")
+region = Rect2(213, 0, 213, 87)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1p6q"]
+texture = SubResource("AtlasTexture_30j42")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uye5v"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +140,94 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jyoq8")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(384, 192)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "menu_start"
+libraries = {
+"": SubResource("AnimationLibrary_6f5c1")
+}
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_2q458")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_wc7a8")
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 421.0
+offset_right = 733.0
+offset_bottom = 641.0
+theme_override_fonts/font = ExtResource("4_0ivjs")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_12gqb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_12gqb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lj7hb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_emyju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1cp2n")
+text = "Continue"
+
+[node name="NewGameButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 406.0
+offset_right = 352.0
+offset_bottom = 616.0
+theme_override_fonts/font = ExtResource("4_0ivjs")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_iiq8o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iiq8o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3rxcc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ccram")
+text = "New Game"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 634.0
+offset_right = 360.0
+offset_bottom = 742.0
+theme_override_fonts/font = ExtResource("4_0ivjs")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_xt5t6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xt5t6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wig3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vye22")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 657.0
+offset_right = 692.0
+offset_bottom = 744.0
+theme_override_fonts/font = ExtResource("4_0ivjs")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_knhw8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_knhw8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i1p6q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uye5v")
+text = "Quit"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("9_7awlx")]
+visible = false
+layout_mode = 1
+offset_top = 384.0
+offset_bottom = 384.0
+hide_pause_background = false
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

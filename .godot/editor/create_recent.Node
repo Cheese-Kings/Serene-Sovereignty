@@ -1,12 +1,13 @@
+TextureButton
+TextureRect
+Button
+AnimationPlayer
+Camera2D
 Timer
 AudioStreamPlayer
-AnimationPlayer
 Node2D
 Label
-TextureRect
 SoundEffect
-TextureButton
-Button
 VBoxContainer
 Sprite2D
 CloudSpawner
@@ -29,4 +30,3 @@ CanvasGroup
 Area2D
 Blackboard
 SequenceComposite
-SelectorComposite

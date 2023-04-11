@@ -41,3 +41,4 @@ func _on_upgrade_farm_pressed():
 
 func _on_farm_house_button_pressed():
 	GameStats.gold += GameStats.farm_level
+	GameStats.total_gold_earned += GameStats.farm_level

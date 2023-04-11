@@ -27,6 +27,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if stats.health <= 0:
+		if is_in_group("EnemyTroop"): GameStats.enemies_killed += 1
 		queue_free()
 	
 	if navigating:

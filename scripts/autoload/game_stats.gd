@@ -2,7 +2,10 @@ extends Node
 
 
 var gold: int = 10000
+var total_gold_earned: int = 0
+
 var current_day: int = 1
+var enemies_killed: int = 0
 
 var farm_level: int = 1
 var farm_upgrade_cost: int = 100
