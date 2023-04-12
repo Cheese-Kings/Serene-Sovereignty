@@ -25,6 +25,7 @@ func _on_apply_settings_pressed():
 	SettingValues.enable_clouds = cloud_enable_box.button_pressed
 	SettingValues.fullscreen = fullscreen_enable_box.button_pressed
 	SaveSystem.save_settings()
+	SaveSystem.load_settings()
 
 func _on_cloud_enable_box_pressed():
 	button_click.play()

@@ -86,10 +86,11 @@ func load_game():
 	get_tree().get_first_node_in_group("Game").enable_losing = true
 
 func delete_save_data():
-	var save_files = DirAccess.get_files_at("user://save_data")
-	for file in save_files:
-		DirAccess.remove_absolute("user://save_data/" + file)
-	DirAccess.remove_absolute("user://save_data")
+	if DirAccess.dir_exists_absolute("user://save_data"):
+		var save_files = DirAccess.get_files_at("user://save_data")
+		for file in save_files:
+			DirAccess.remove_absolute("user://save_data/" + file)
+		DirAccess.remove_absolute("user://save_data")
 
 func setting_update():
 	if SettingValues.fullscreen: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

@@ -1,3 +1,12 @@
-res://scenes/game.tscn
+res://scenes/menus/settings_menu.tscn
 res://assets/anim_libraries/troops.tres
+res://scripts/menus/settings_menu.gd
+res://scenes/game.tscn
+res://scenes/day_night_cycle.tscn
+res://scenes/main_menu.tscn
+res://scenes/menus/pause_menu.tscn
 res://scripts/autoload/game_stats.gd
+res://scripts/custom_nodes/enemy_spawner.gd
+res://scripts/custom_nodes/troop.gd
+res://scripts/troops/farmer.gd
+res://scripts/autoload/save_system.gd

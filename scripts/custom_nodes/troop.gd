@@ -20,6 +20,9 @@ func _ready():
 	_initialize_state_machine()
 	_initialize_stats()
 	
+	if is_in_group("EnemyTroop"):
+		stats.set_attack_cooldown(stats.attack_cooldown * 2)
+	
 	troop_animator.speed_scale = stats.speed / 10
 	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
@@ -28,6 +31,9 @@ func _ready():
 func _physics_process(_delta):
 	if stats.health <= 0:
 		if is_in_group("EnemyTroop"): GameStats.enemies_killed += 1
+		queue_free()
+	
+	if global_position.y <= -215 or global_position.y >= 215 or global_position.x <= -385 or global_position.x >= 385:
 		queue_free()
 	
 	if navigating:

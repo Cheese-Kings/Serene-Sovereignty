@@ -426,7 +426,7 @@ texture = ExtResource("7_7olro")
 [node name="Troops" type="CanvasGroup" parent="." groups=["TroopContainer"]]
 
 [node name="Farmer" parent="Troops" instance=ExtResource("24_gjf34")]
-position = Vector2(0, 40)
+position = Vector2(0, 16)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(0, -184)
