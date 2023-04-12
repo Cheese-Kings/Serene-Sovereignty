@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bljbeavu5chvn"]
+[gd_scene load_steps=27 format=3 uid="uid://bljbeavu5chvn"]
 
 [ext_resource type="FontFile" uid="uid://cwqhd35lj1ldk" path="res://assets/fonts/dogica/TTF/dogicabold.ttf" id="1_5awlp"]
 [ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_cd5ta"]
 [ext_resource type="Texture2D" uid="uid://ph5ygitg8am6" path="res://assets/sprites/ui/pause_menu/pausemenu.png" id="2_neemc"]
+[ext_resource type="AudioStream" uid="uid://b8luqji76qho8" path="res://assets/sfx/click-21156.mp3" id="2_o1bfv"]
 [ext_resource type="FontFile" uid="uid://cqnbm45upx3g5" path="res://assets/fonts/digital_disco/DigitalDisco.ttf" id="2_orcx4"]
 [ext_resource type="FontFile" uid="uid://bgmrs2blo34xn" path="res://assets/fonts/silkscreen/slkscr.ttf" id="3_6uqgs"]
 [ext_resource type="Texture2D" uid="uid://cqakpcp6lo7bu" path="res://assets/sprites/ui/settings_menu/barborder.png" id="4_igpw4"]
@@ -73,6 +74,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cd5ta")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o1bfv")
+volume_db = -5.0
+bus = &"Sfx"
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -174,6 +180,22 @@ theme_override_icons/unchecked = ExtResource("8_jo3ua")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_57dq4")
 button_pressed = true
 
+[node name="FullScreen" type="HSplitContainer" parent="Settings"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="SettingText" type="Label" parent="Settings/FullScreen"]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_fwlip")
+
+[node name="FullscreenEnableBox" type="CheckBox" parent="Settings/FullScreen"]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("9_j0nlt")
+theme_override_icons/unchecked = ExtResource("8_jo3ua")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_57dq4")
+button_pressed = true
+
 [node name="ApplySettings" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -181,10 +203,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -36.5
-offset_top = 32.0
-offset_right = 36.5
-offset_bottom = 64.0
+offset_left = -42.0
+offset_top = 39.0
+offset_right = 42.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_6uqgs")
@@ -195,4 +217,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_32h52")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xewcb")
 text = "Apply"
 
+[connection signal="drag_ended" from="Settings/SfxVolume/SfxVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="Settings/MusicVolume/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="pressed" from="Settings/Clouds/CloudEnableBox" to="." method="_on_cloud_enable_box_pressed"]
+[connection signal="pressed" from="Settings/FullScreen/FullscreenEnableBox" to="." method="_on_fullscreen_enable_box_pressed"]
 [connection signal="pressed" from="ApplySettings" to="." method="_on_apply_settings_pressed"]

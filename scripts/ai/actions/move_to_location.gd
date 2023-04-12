@@ -3,6 +3,7 @@ extends ActionLeaf
 
 
 @export var destination := Vector2.ZERO
+@export var arrive_sfx: String
 
 var target_reached = false
 
@@ -16,6 +17,10 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if target_reached:
 		target_reached = false
 		actor.get_node("NavigationAgent").disconnect("target_reached", _target_reached)
+		
+		if arrive_sfx != null:
+			if blackboard.sfx_list.has(arrive_sfx):
+				blackboard.get_node(str(blackboard.sfx_list.get(arrive_sfx))).play_sfx()
 		
 		return SUCCESS
 	

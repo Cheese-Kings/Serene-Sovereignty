@@ -1,8 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://wkvwdck3u5ap"]
+[gd_scene load_steps=36 format=3 uid="uid://wkvwdck3u5ap"]
 
 [ext_resource type="Texture2D" uid="uid://ceiht4oyxrks5" path="res://assets/sprites/ui/main_menu/background.png" id="1_2q458"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_jyoq8"]
+[ext_resource type="AudioStream" uid="uid://dp8jnmm30bt11" path="res://assets/music/ambient-classical-guitar-144998.mp3" id="2_md7of"]
 [ext_resource type="Texture2D" uid="uid://j8qo4lhbasx0" path="res://assets/sprites/ui/main_menu/gamelogo2.png" id="2_wc7a8"]
+[ext_resource type="AudioStream" uid="uid://b8luqji76qho8" path="res://assets/sfx/click-21156.mp3" id="3_au27n"]
 [ext_resource type="Texture2D" uid="uid://blepitahagtbh" path="res://assets/sprites/ui/main_menu/Continue_button.png" id="3_pamu1"]
 [ext_resource type="FontFile" uid="uid://cqnbm45upx3g5" path="res://assets/fonts/digital_disco/DigitalDisco.ttf" id="4_0ivjs"]
 [ext_resource type="Texture2D" uid="uid://cdm17tkvfx8t1" path="res://assets/sprites/ui/main_menu/Newgamebutton.png" id="4_ensbd"]
@@ -151,6 +153,16 @@ libraries = {
 "": SubResource("AnimationLibrary_6f5c1")
 }
 
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_md7of")
+autoplay = true
+bus = &"Music"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_au27n")
+volume_db = -5.0
+bus = &"Sfx"
+
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
@@ -227,6 +239,7 @@ offset_top = 384.0
 offset_bottom = 384.0
 hide_pause_background = false
 
+[connection signal="finished" from="MenuMusic" to="." method="_on_menu_music_finished"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

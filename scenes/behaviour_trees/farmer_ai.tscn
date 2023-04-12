@@ -34,7 +34,9 @@ script = ExtResource("4_u6ngf")
 [node name="GoFarmSomewhere" type="Node" parent="SelectorComposite/FarmDuringDay"]
 script = ExtResource("6_aeg5n")
 move_range = Vector2(300, 80)
+arrive_sfx = "farm"
 
 [node name="DropEarningsAtFarmHouse" type="Node" parent="SelectorComposite/FarmDuringDay"]
 script = ExtResource("7_68sdt")
 destination = Vector2(-144, 89)
+arrive_sfx = "drop_off_loot"

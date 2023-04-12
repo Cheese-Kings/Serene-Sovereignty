@@ -37,7 +37,27 @@ func save_settings():
 	settings_file.store_line(str(SettingValues.sfx_volume))
 	settings_file.store_line(str(SettingValues.music_volume))
 	settings_file.store_line(str(float(SettingValues.enable_clouds)))
+	settings_file.store_line(str(float(SettingValues.fullscreen)))
 	settings_file.flush()
+	
+	setting_update()
+
+func load_settings():
+	if FileAccess.file_exists("user://settings.data"):
+		var settings_file = FileAccess.open("user://settings.data", FileAccess.READ)
+		var split_lines = settings_file.get_as_text().split("\n")
+		
+		SettingValues.sfx_volume = split_lines[0].to_int()
+		SettingValues.music_volume = split_lines[1].to_int()
+		SettingValues.enable_clouds = bool(float(split_lines[2]))
+		SettingValues.fullscreen = bool(float(split_lines[3]))
+		
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), split_lines[0].to_int())
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), split_lines[1].to_int())
+		
+		setting_update()
+		
+		get_tree().get_first_node_in_group("SettingsMenu").update_settings()
 
 func load_game():
 	if FileAccess.file_exists("user://save_data/troops.tscn"):
@@ -62,19 +82,7 @@ func load_game():
 		for num in range(GameStats.farm_level):
 			GameStats.farm_upgrade_cost *= 1.5
 	
-	if FileAccess.file_exists("user://settings.data"):
-		var settings_file = FileAccess.open("user://settings.data", FileAccess.READ)
-		var split_lines = settings_file.get_as_text().split("\n")
-		
-		SettingValues.sfx_volume = split_lines[0].to_int()
-		SettingValues.music_volume = split_lines[1].to_int()
-		SettingValues.enable_clouds = bool(float(split_lines[2]))
-		
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), split_lines[0].to_int())
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), split_lines[1].to_int())
-		
-		get_tree().get_first_node_in_group("SettingsMenu").update_settings()
-	
+	get_tree().get_first_node_in_group("SettingsMenu").update_settings()
 	get_tree().get_first_node_in_group("Game").enable_losing = true
 
 func delete_save_data():
@@ -82,3 +90,7 @@ func delete_save_data():
 	for file in save_files:
 		DirAccess.remove_absolute("user://save_data/" + file)
 	DirAccess.remove_absolute("user://save_data")
+
+func setting_update():
+	if SettingValues.fullscreen: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else: DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

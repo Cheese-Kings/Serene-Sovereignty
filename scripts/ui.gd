@@ -2,6 +2,7 @@ extends Control
 
 
 @onready var pause_menu = $PauseMenu
+@onready var button_click = $"../../ButtonClick"
 
 
 func _process(_delta):
@@ -34,11 +35,13 @@ func _on_settings_pressed():
 	pause_menu.pause()
 
 func _on_upgrade_farm_pressed():
+	button_click.play()
 	if GameStats.gold >= GameStats.farm_upgrade_cost:
 		GameStats.farm_level += 1
 		GameStats.gold -= GameStats.farm_upgrade_cost
 		GameStats.farm_upgrade_cost *= 1.5
 
 func _on_farm_house_button_pressed():
+	button_click.play()
 	GameStats.gold += GameStats.farm_level
 	GameStats.total_gold_earned += GameStats.farm_level

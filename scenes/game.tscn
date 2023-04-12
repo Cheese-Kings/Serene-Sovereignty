@@ -1,9 +1,10 @@
-[gd_scene load_steps=84 format=3 uid="uid://cxdab7u2nnqn1"]
+[gd_scene load_steps=85 format=3 uid="uid://cxdab7u2nnqn1"]
 
 [ext_resource type="PackedScene" uid="uid://b8qiebtfu40ig" path="res://scenes/day_night_cycle.tscn" id="1_av7on"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tycli"]
 [ext_resource type="Texture2D" uid="uid://bhcdl7n54j5n7" path="res://assets/sprites/grassfield.png" id="2_kpsyd"]
 [ext_resource type="Texture2D" uid="uid://d4hrl27gpfq2u" path="res://assets/sprites/ui/townhallshadow.png" id="3_aksag"]
+[ext_resource type="AudioStream" uid="uid://b8luqji76qho8" path="res://assets/sfx/click-21156.mp3" id="3_ewtbe"]
 [ext_resource type="Script" path="res://scripts/game_music.gd" id="3_u6e3s"]
 [ext_resource type="AudioStream" uid="uid://dp8jnmm30bt11" path="res://assets/music/ambient-classical-guitar-144998.mp3" id="3_v7rxq"]
 [ext_resource type="PackedScene" uid="uid://1awynisxpbmu" path="res://scenes/troops/loser.tscn" id="3_wrk6b"]
@@ -334,6 +335,11 @@ script = ExtResource("1_tycli")
 [node name="DayNightCycle" parent="." instance=ExtResource("1_av7on")]
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ewtbe")
+volume_db = -5.0
+bus = &"Sfx"
 
 [node name="Music" type="Node2D" parent="."]
 script = ExtResource("3_u6e3s")

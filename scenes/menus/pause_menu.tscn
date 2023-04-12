@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cswvv7e1eyxus"]
+[gd_scene load_steps=13 format=3 uid="uid://cswvv7e1eyxus"]
 
 [ext_resource type="FontFile" uid="uid://cwqhd35lj1ldk" path="res://assets/fonts/dogica/TTF/dogicabold.ttf" id="1_45p2m"]
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_cw53y"]
+[ext_resource type="AudioStream" uid="uid://b8luqji76qho8" path="res://assets/sfx/click-21156.mp3" id="2_0t3k5"]
 [ext_resource type="Texture2D" uid="uid://cwkmgqpueqy0j" path="res://assets/sprites/ui/pause_menu/ResumeButtonPause.png" id="4_4d1c3"]
 [ext_resource type="PackedScene" uid="uid://bljbeavu5chvn" path="res://scenes/menus/settings_menu.tscn" id="4_sndpc"]
 [ext_resource type="Texture2D" uid="uid://3e6w41xa1vkg" path="res://assets/sprites/ui/pause_menu/SaveButtonPause.png" id="5_543a5"]
@@ -29,6 +30,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cw53y")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0t3k5")
+volume_db = -5.0
+bus = &"Sfx"
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

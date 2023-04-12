@@ -6,8 +6,12 @@ extends TextureButton
 
 var purchase_price: int = 1
 
+@onready var button_click = $"../../../../ButtonClick"
+
 
 func _on_pressed():
+	button_click.play()
+	
 	var troop_container = get_tree().get_first_node_in_group("TroopContainer")
 	
 	if GameStats.gold >= purchase_price:

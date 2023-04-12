@@ -1,11 +1,3 @@
-res://scenes/menus/pause_menu.tscn
-res://assets/anim_libraries/troops.tres
-res://scripts/game.gd
 res://scenes/game.tscn
-res://scenes/day_night_cycle.tscn
-res://scenes/main_menu.tscn
-res://scripts/main_menu.gd
-res://addons/arc_loader/loading_screen.tscn
-res://scripts/menus/pause_menu.gd
-res://scripts/menus/settings_menu.gd
-res://scripts/autoload/save_system.gd
+res://assets/anim_libraries/troops.tres
+res://scripts/autoload/game_stats.gd

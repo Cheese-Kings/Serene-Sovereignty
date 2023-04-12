@@ -1,13 +1,14 @@
+AudioStreamPlayer
+Blackboard
+SoundEffect
+Node2D
 TextureButton
 TextureRect
 Button
 AnimationPlayer
 Camera2D
 Timer
-AudioStreamPlayer
-Node2D
 Label
-SoundEffect
 VBoxContainer
 Sprite2D
 CloudSpawner
@@ -28,5 +29,4 @@ MoveToLocation
 GoToRandomArea
 CanvasGroup
 Area2D
-Blackboard
 SequenceComposite

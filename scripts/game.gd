@@ -6,6 +6,7 @@ var enable_losing = false
 @onready var days_survived = $UILayer/UI/LoseScreen/DaysSurvived
 @onready var enemies_defeated = $UILayer/UI/LoseScreen/EnemiesDefeated
 @onready var total_gold_earned = $UILayer/UI/LoseScreen/TotalGoldEarned
+@onready var button_click = $ButtonClick
 
 
 func _ready():
@@ -37,4 +38,5 @@ func _on_town_hall_area_exited(area):
 		body.get_node("Collider").set_deferred("disabled", false)
 
 func _on_return_to_menu_after_lose_button_pressed():
+	button_click.play()
 	ArcLoader.change_scene("res://scenes/main_menu.tscn")
