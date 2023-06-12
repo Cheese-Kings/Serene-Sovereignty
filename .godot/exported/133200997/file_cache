@@ -5,9 +5,9 @@ res://addons/phase_console/console.tscn::5c8b77bb9421710dee9e0568c85e3562::16790
 res://addons/phase_console/global_commands.tscn::72c41db71bb5da1547296ba6c8236121::1679018269::res://.godot/exported/133200997/export-86a448605d7504aa8c8bb5d075f28d02-global_commands.scn
 res://scenes/behaviour_trees/loser_ai.tscn::e3e5004ae3ad6089e35042e396ad3239::1680750274::res://.godot/exported/133200997/export-839c6f422f41585816f77af399e7a7f9-loser_ai.scn
 res://scenes/troops/loser.tscn::7e010b18f57f6c2e9e6b9d03c3218bed::1680962576::res://.godot/exported/133200997/export-b89e9e1f585bb426506e71a2d5e27855-loser.scn
-res://scenes/game.tscn::ffb547710a8129851f3d32156c9b024a::1681315682::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://scenes/game.tscn::ffb547710a8129851f3d32156c9b024a::1684982159::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
 res://scenes/main_menu.tscn::7db49f8e57ce6fed99f253f540cfc33c::1681315682::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
-res://assets/anim_libraries/troops.tres::aa12e779abfe1b03ac4a08c882e4ee1d::1681310978::res://.godot/exported/133200997/export-f3425695581d75507c417b815b1d6744-troops.res
+res://assets/anim_libraries/troops.tres::aa12e779abfe1b03ac4a08c882e4ee1d::1684982159::res://.godot/exported/133200997/export-f3425695581d75507c417b815b1d6744-troops.res
 res://scenes/behaviour_trees/enemy_melee_ai.tscn::77e201de812622c3c16f10c82a9ab0c8::1680849305::res://.godot/exported/133200997/export-32f78731cb684995c8f0a01c3827bd88-enemy_melee_ai.scn
 res://scenes/behaviour_trees/enemy_ranged_ai.tscn::5f85e78687c9a73e2707eec9755e8702::1680853717::res://.godot/exported/133200997/export-6125d6d954f6d7fe52b81eeb627d7014-enemy_ranged_ai.scn
 res://scenes/behaviour_trees/enemy_suicidal_ai.tscn::9dceb9ccf1e7bcba4f11d5cdc3081ee5::1680855516::res://.godot/exported/133200997/export-b171011bbf60212b71425837ad0a0f93-enemy_suicidal_ai.scn
