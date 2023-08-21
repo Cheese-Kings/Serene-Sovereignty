@@ -6,11 +6,15 @@ extends Control
 @onready var settings_menu = $SettingsMenu
 @onready var menu_music = $MenuMusic
 @onready var button_click = $ButtonClick
+@onready var quit_button: Button = $QuitButton
 
 
 func _ready():
 	if not DirAccess.dir_exists_absolute("user://save_data"):
 		continue_button.hide()
+	
+	if OS.has_feature("web"):
+		quit_button.hide()
 	
 	SaveSystem.load_settings()
 

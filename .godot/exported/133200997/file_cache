@@ -5,9 +5,9 @@ res://addons/phase_console/console.tscn::5c8b77bb9421710dee9e0568c85e3562::16790
 res://addons/phase_console/global_commands.tscn::72c41db71bb5da1547296ba6c8236121::1679018269::res://.godot/exported/133200997/export-86a448605d7504aa8c8bb5d075f28d02-global_commands.scn
 res://scenes/behaviour_trees/loser_ai.tscn::e3e5004ae3ad6089e35042e396ad3239::1680750274::res://.godot/exported/133200997/export-839c6f422f41585816f77af399e7a7f9-loser_ai.scn
 res://scenes/troops/loser.tscn::7e010b18f57f6c2e9e6b9d03c3218bed::1680962576::res://.godot/exported/133200997/export-b89e9e1f585bb426506e71a2d5e27855-loser.scn
-res://scenes/game.tscn::ffb547710a8129851f3d32156c9b024a::1684982159::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
-res://scenes/main_menu.tscn::7db49f8e57ce6fed99f253f540cfc33c::1681315682::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
-res://assets/anim_libraries/troops.tres::aa12e779abfe1b03ac4a08c882e4ee1d::1684982159::res://.godot/exported/133200997/export-f3425695581d75507c417b815b1d6744-troops.res
+res://scenes/game.tscn::ffb547710a8129851f3d32156c9b024a::1684983927::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://scenes/main_menu.tscn::7db49f8e57ce6fed99f253f540cfc33c::1686732026::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
+res://assets/anim_libraries/troops.tres::aa12e779abfe1b03ac4a08c882e4ee1d::1686730638::res://.godot/exported/133200997/export-f3425695581d75507c417b815b1d6744-troops.res
 res://scenes/behaviour_trees/enemy_melee_ai.tscn::77e201de812622c3c16f10c82a9ab0c8::1680849305::res://.godot/exported/133200997/export-32f78731cb684995c8f0a01c3827bd88-enemy_melee_ai.scn
 res://scenes/behaviour_trees/enemy_ranged_ai.tscn::5f85e78687c9a73e2707eec9755e8702::1680853717::res://.godot/exported/133200997/export-6125d6d954f6d7fe52b81eeb627d7014-enemy_ranged_ai.scn
 res://scenes/behaviour_trees/enemy_suicidal_ai.tscn::9dceb9ccf1e7bcba4f11d5cdc3081ee5::1680855516::res://.godot/exported/133200997/export-b171011bbf60212b71425837ad0a0f93-enemy_suicidal_ai.scn
@@ -21,7 +21,7 @@ res://scenes/enemy_troops/evil_swordsman.tscn::19bbe810201c3dab0df85ce46060a090:
 res://scenes/enemy_troops/evil_wizard.tscn::0520f48627e43e1b754ec81cf1783844::1681141152::res://.godot/exported/133200997/export-7a66a397c4d7d8fe28c36abc502751ec-evil_wizard.scn
 res://scenes/menus/debug_menu.tscn::6c7feb33009b29ba01bc30c84eb6d2ab::1681132743::res://.godot/exported/133200997/export-6f447baf1229961e3fe2908cd07fae64-debug_menu.scn
 res://scenes/menus/pause_menu.tscn::929496d4959c45fae4de17dcdb7bf126::1681315683::res://.godot/exported/133200997/export-3ee0f857d137fa1f52f74ae3e5abb6d6-pause_menu.scn
-res://scenes/menus/settings_menu.tscn::9924bebcc89e1eced0133951a2295c18::1681315683::res://.godot/exported/133200997/export-10619a165fc94d84880f055381efda8e-settings_menu.scn
+res://scenes/menus/settings_menu.tscn::704324a1fae05b9550fdac9230a96b90::1686730713::res://.godot/exported/133200997/export-10619a165fc94d84880f055381efda8e-settings_menu.scn
 res://scenes/projectiles/archer_arrow.tscn::845d21690a2483c3eb63f7b27db7ff3e::1681141123::res://.godot/exported/133200997/export-6e0bf682260f73aaf96eeaf9fc31dff7-archer_arrow.scn
 res://scenes/projectiles/evil_archer_arrow.tscn::974e84345c5017739d2e888fa17a7603::1681143758::res://.godot/exported/133200997/export-37ddd243d742c4fde6acabe311710dfe-evil_archer_arrow.scn
 res://scenes/projectiles/evil_wizball.tscn::33083d0ad7bc5637eee2b19abd19d6bc::1680853718::res://.godot/exported/133200997/export-8cb21da693aa601e356fd20cae1461a8-evil_wizball.scn
